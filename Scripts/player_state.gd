@@ -1,7 +1,7 @@
 class_name PlayerState
 extends State
 
-@onready var player: Player = get_tree().get_first_node_in_group("Player")
+@onready var player: Player = get_parent().get_parent()
 
 var gravity: float = ProjectSettings.get_setting("physics/2d/default_gravity",980)
 
@@ -11,6 +11,7 @@ var walk_anim: String = "Walk"
 var jump_anim: String = "Jump"
 var fall_anim: String = "Fall"
 var standlight_anim: String = "StandLight"
+var hitstun_anim: String = "Hitstun"
 
 
 # States (ADD AS EXTERnAL VARIABLES AND LINK IN EDITOR)
@@ -21,9 +22,7 @@ var standlight_anim: String = "StandLight"
 @export var fall_state: PlayerState
 @export var standlight_state: PlayerState
 @export var jumplight_state: PlayerState
-
-# State variables
-var sprite_flipped: bool = false
+@export var hitstun_state: PlayerState
 
 # Input keys MAKE SURE THEY MATCH 
 var movement_key: String = "Movement"
@@ -32,6 +31,9 @@ var right_key: String = "player1_right"
 var jump_key: String = "player1_up"
 var light_key: String = "player1_light"
 
+# Other variables
+var sprite_flipped: bool = false
+var health: int = 100
 # need to track later player facing direction relative to opponent
 
 # TODO later for crossing up

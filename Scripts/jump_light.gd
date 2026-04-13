@@ -18,14 +18,22 @@ func process_input(event: InputEvent) -> State:
 	return null
 
 func process_physics(delta: float) -> State:
-	super.process_physics(delta)
+	if(player.is_on_floor()):
+		if get_move_dir() != 0.0:
+			return walk_state
+		else: 
+			return idle_state
+	player.velocity.y += gravity * delta
+	player.move_and_slide()
 	return null
 	
 func process_frame(delta: float) -> State:
 	super(delta)
 	if attack_complete: 
 		print("attack complete")
-		return fall_state
+		if not player.is_on_floor():
+			return fall_state
+		return idle_state
 	return null
 
 func get_move_dir() -> float:

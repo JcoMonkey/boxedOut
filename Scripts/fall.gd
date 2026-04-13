@@ -14,7 +14,8 @@ func exit(new_state: State = null) -> void:
 	pass
 
 func process_input(event: InputEvent) -> State:
-	super(event)
+	if event.is_action_pressed(light_key):
+		return jumplight_state
 	return null
 
 func process_physics(delta: float) -> State:

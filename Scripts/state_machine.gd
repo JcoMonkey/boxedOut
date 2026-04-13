@@ -22,6 +22,9 @@ func process_physics(delta: float) -> void:
 	if new_state: change_state(new_state)
 	
 func change_state(new_state: State) -> void:
+	if new_state == null:
+		push_warning("change_state called with null new_state")
+		return
 	if current_state: current_state.exit(new_state)
 	current_state = new_state
 	current_state.enter()
