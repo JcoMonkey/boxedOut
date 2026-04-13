@@ -1,7 +1,7 @@
-class_name PlayerState
+class_name Player2State
 extends State
 
-@onready var player: Player = get_parent().get_parent()
+@onready var player: Player2 = get_parent().get_parent()
 
 var gravity: float = ProjectSettings.get_setting("physics/2d/default_gravity",980)
 
@@ -18,22 +18,22 @@ var defeat_anim: String = "Defeat"
 
 # States (ADD AS EXTERnAL VARIABLES AND LINK IN EDITOR)
 @export_group("States")
-@export var idle_state: PlayerState
-@export var walk_state: PlayerState
-@export var jump_state: PlayerState
-@export var fall_state: PlayerState
-@export var standlight_state: PlayerState
-@export var jumplight_state: PlayerState
-@export var hitstun_state: PlayerState
-@export var defeat_state: PlayerState
+@export var idle_state: Player2State
+@export var walk_state: Player2State
+@export var jump_state: Player2State
+@export var fall_state: Player2State
+@export var standlight_state: Player2State
+@export var jumplight_state: Player2State
+@export var hitstun_state: Player2State
+@export var defeat_state: Player2State
 
 
 # Input keys MAKE SURE THEY MATCH 
-var movement_key: String = "Movement"
-var left_key: String = "player1_left"
-var right_key: String = "player1_right"
-var jump_key: String = "player1_up"
-var light_key: String = "player1_light"
+var movement_key: String = "Movement_p2"
+var left_key: String = "player2_left"
+var right_key: String = "player2_right"
+var jump_key: String = "player2_up"
+var light_key: String = "player2_light"
 
 # Other variables
 var sprite_flipped: bool = false

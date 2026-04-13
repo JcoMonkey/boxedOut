@@ -1,11 +1,10 @@
 extends ProgressBar
 
-@export var playerInfo : PlayerState
+@onready var player : Player = get_node("../../Player")
 
 func _ready():
-	#playerInfo.healthChanged.connect(update)
+	player.healthChanged.connect(update)
 	update()
 
 func update():
-	pass
-	#value = playerInfo. currentHealth * 100 / playerInfo.maxHealth
+	value = player.currentHealth * 100 / player.maxHealth

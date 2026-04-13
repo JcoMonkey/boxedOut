@@ -1,15 +1,15 @@
-class_name PlayerHitstunState
-extends PlayerState
+class_name Player2HitstunState
+extends Player2State
 
-@onready var hurtbox: PlayerHurtBox = $"../../PlayerHurtbox"
+@onready var hurtbox: Player2HurtBox = $"../../PlayerHurtbox"
 
 var hitstun_complete
 
 func enter() -> void:
 	player.take_damage(100)
-	print("Player health = ",player.currentHealth)
+	print("Player 2 health = ",player.currentHealth)
 	hitstun_complete = false
-	print("Hitstun state")
+	print("P2 Hitstun state")
 	player.animation.play(hitstun_anim)
 	player.animation.animation_finished.connect(func(_anim): hitstun_complete = true)
 
@@ -31,7 +31,7 @@ func process_physics(delta: float) -> State:
 func process_frame(delta: float) -> State:
 	super(delta)
 	if hitstun_complete:
-		print("hitstun complete")
+		print("p2 hitstun complete")
 		if player.currentHealth <= 0:
 			return defeat_state
 		elif(not player.is_on_floor()):

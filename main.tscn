@@ -1,14 +1,13 @@
-[gd_scene load_steps=19 format=4 uid="uid://c033oja3lxwkr"]
+[gd_scene load_steps=17 format=4 uid="uid://c033oja3lxwkr"]
 
 [ext_resource type="Script" uid="uid://dodhuqfr8s0tv" path="res://Scripts/main.gd" id="1_5vw27"]
 [ext_resource type="Texture2D" uid="uid://criaeocvwxfs2" path="res://assets/boxingring.png" id="2_5vw27"]
 [ext_resource type="Texture2D" uid="uid://dw7t4f4qqub5u" path="res://assets/tilemap.png" id="4_1bvp3"]
 [ext_resource type="PackedScene" uid="uid://2bblk5htisam" path="res://player.tscn" id="4_7mycd"]
 [ext_resource type="Texture2D" uid="uid://bol3cy0t8qxdw" path="res://assets/tileset.png" id="5_lquwl"]
+[ext_resource type="PackedScene" uid="uid://cqtqjpnmwkos6" path="res://player2.tscn" id="6_4c57u"]
 [ext_resource type="Script" uid="uid://601nok4jxcqd" path="res://Scripts/healthbar.gd" id="9_4c57u"]
 [ext_resource type="Script" uid="uid://ssm4uy56jx6f" path="res://Scripts/camera_2d.gd" id="9_kek77"]
-[ext_resource type="Script" uid="uid://du5q3mivkcfj3" path="res://Scripts/hitbox.gd" id="22_1u8w0"]
-[ext_resource type="Script" uid="uid://d0k0skuiw31qy" path="res://Scripts/hurtbox.gd" id="24_0odxb"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_272bh"]
 texture = ExtResource("5_lquwl")
@@ -4623,9 +4622,6 @@ size = Vector2(4803, 590)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2cqfq"]
 size = Vector2(573.975, 2414.331)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ryguw"]
-size = Vector2(127, 166)
-
 [node name="Main" type="Node2D"]
 script = ExtResource("1_5vw27")
 
@@ -4655,6 +4651,10 @@ collision_enabled = false
 position = Vector2(370.00003, 518)
 scale = Vector2(0.12556988, 0.12556988)
 
+[node name="Player2" parent="." instance=ExtResource("6_4c57u")]
+position = Vector2(891.00006, 510.00006)
+scale = Vector2(0.12556988, 0.12556988)
+
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 position = Vector2(642.4613, 523.90027)
 scale = Vector2(0.43148524, 0.43148524)
@@ -4671,26 +4671,6 @@ shape = SubResource("RectangleShape2D_2cqfq")
 position = Vector2(1589.8828, -952.70435)
 shape = SubResource("RectangleShape2D_2cqfq")
 
-[node name="testhurtbox" type="Area2D" parent="."]
-position = Vector2(634.4613, 379.9003)
-scale = Vector2(1.3217938, 1.3217938)
-script = ExtResource("24_0odxb")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="testhurtbox"]
-position = Vector2(53.5, 73)
-shape = SubResource("RectangleShape2D_ryguw")
-debug_color = Color(0, 0.6316502, 0.4632914, 0.41960785)
-
-[node name="testhitbox" type="Area2D" parent="."]
-position = Vector2(913.4613, 376.9003)
-scale = Vector2(1.3217938, 1.3217938)
-script = ExtResource("22_1u8w0")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="testhitbox"]
-position = Vector2(53.5, 73)
-shape = SubResource("RectangleShape2D_ryguw")
-debug_color = Color(0.920751, 0.22778282, 0.42216197, 0.41960785)
-
 [node name="Camera2D" type="Camera2D" parent="." groups=["Camera"]]
 position = Vector2(643, 359)
 scale = Vector2(0.9512342, 0.9512342)
@@ -4699,11 +4679,14 @@ script = ExtResource("9_kek77")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="ProgressBar" type="ProgressBar" parent="CanvasLayer"]
+[node name="P1_healthbar" type="ProgressBar" parent="CanvasLayer"]
 offset_left = 70.0
 offset_top = 29.0
 offset_right = 618.8421
 offset_bottom = 116.0
-max_value = 1000.0
-value = 1000.0
+value = 100.0
 script = ExtResource("9_4c57u")
+
+[node name="P2_healthbar" type="ProgressBar" parent="CanvasLayer"]
+offset_right = 4.0
+offset_bottom = 27.0

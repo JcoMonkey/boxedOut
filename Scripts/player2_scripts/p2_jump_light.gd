@@ -1,0 +1,58 @@
+class_name Player2JumpLightState
+extends Player2State
+
+var attack_complete
+
+@onready var hitbox_area: Hitbox = $jL_HitboxArea
+@onready var hitbox_collision: CollisionShape2D = $"jL_HitboxArea/jL_hitbox"
+
+func enter() -> void:
+	print("Before enter disabled:", hitbox_area.monitoring)
+	hitbox_collision.set_deferred("disabled", true)
+	hitbox_area.monitoring = true
+	hitbox_area.monitorable = true
+	
+	attack_complete = false
+	print("Jump Light Attack state")
+	player.animation.play(jumplight_anim)
+	player.animation.animation_finished.connect(func(_anim): attack_complete = true)
+	
+func exit(new_state: State = null) -> void:
+	hitbox_collision.set_deferred("disabled", true)
+	hitbox_area.monitoring = false
+	hitbox_area.monitorable = false
+	print("After exit disabled:", hitbox_area.monitoring)
+
+	
+	attack_complete = true
+	super(new_state)
+	pass
+
+func process_input(event: InputEvent) -> State:
+	super(event)
+	return null
+
+func process_physics(delta: float) -> State:
+	if(player.is_on_floor()):
+		player.velocity.x = 0
+		if get_move_dir() != 0.0:
+			return walk_state
+		else: 
+			return idle_state
+	player.velocity.y += gravity * delta
+	player.move_and_slide()
+	return null
+	
+func process_frame(delta: float) -> State:
+	print("After enter enabled:", hitbox_area.monitoring)
+	super(delta)
+	if attack_complete: 
+		print("attack complete")
+		if not player.is_on_floor():
+			return fall_state
+		return idle_state
+	return null
+
+func get_move_dir() -> float:
+	print("Input axis = ", Input.get_axis(left_key, right_key))
+	return Input.get_axis(left_key, right_key)
