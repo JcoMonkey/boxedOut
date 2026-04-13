@@ -1,6 +1,6 @@
 [gd_scene load_steps=41 format=3 uid="uid://2bblk5htisam"]
 
-[ext_resource type="Script" uid="uid://crugnjbeh6vld" path="res://Scripts/player1.gd" id="1_7hik5"]
+[ext_resource type="Script" uid="uid://crugnjbeh6vld" path="res://Scripts/player1_scripts/player1.gd" id="1_7hik5"]
 [ext_resource type="Texture2D" uid="uid://bbdkn41442hml" path="res://assets/player/player1/player1_idle/squaresam_idle1_big.png" id="2_7ahtn"]
 [ext_resource type="Texture2D" uid="uid://dfxa8gkla2uap" path="res://assets/player/player1/player1_idle/squaresam_idle2_big.png" id="3_7lmhl"]
 [ext_resource type="Texture2D" uid="uid://ccydergquae1e" path="res://assets/player/player1/player1_misc/squaresam_ko.png" id="4_7hik5"]
@@ -16,16 +16,16 @@
 [ext_resource type="Texture2D" uid="uid://cty4clso2nkti" path="res://assets/player/player1/player1_walk/squaresam_walk2_big.png" id="12_efrwb"]
 [ext_resource type="AudioStream" uid="uid://bvfsgbt1lkjep" path="res://assets/scream.mp3" id="13_hiqhm"]
 [ext_resource type="Script" uid="uid://dkrtexlliu4k8" path="res://Scripts/state_machine.gd" id="14_tkwlq"]
-[ext_resource type="Script" uid="uid://jjujkgsq8pwa" path="res://Scripts/idle.gd" id="15_hl5qd"]
-[ext_resource type="Script" uid="uid://bnksdj8lo2cx4" path="res://Scripts/walk.gd" id="16_ek41f"]
-[ext_resource type="Script" uid="uid://cbxyrqti3xqy2" path="res://Scripts/jump.gd" id="17_khis8"]
-[ext_resource type="Script" uid="uid://ttcdv06j5bv3" path="res://Scripts/fall.gd" id="18_b88wv"]
-[ext_resource type="Script" uid="uid://bfnmvu6c0nl86" path="res://Scripts/stand_light.gd" id="19_pgbbb"]
+[ext_resource type="Script" uid="uid://jjujkgsq8pwa" path="res://Scripts/player1_scripts/idle.gd" id="15_hl5qd"]
+[ext_resource type="Script" uid="uid://bnksdj8lo2cx4" path="res://Scripts/player1_scripts/walk.gd" id="16_ek41f"]
+[ext_resource type="Script" uid="uid://cbxyrqti3xqy2" path="res://Scripts/player1_scripts/jump.gd" id="17_khis8"]
+[ext_resource type="Script" uid="uid://ttcdv06j5bv3" path="res://Scripts/player1_scripts/fall.gd" id="18_b88wv"]
+[ext_resource type="Script" uid="uid://bfnmvu6c0nl86" path="res://Scripts/player1_scripts/stand_light.gd" id="19_pgbbb"]
 [ext_resource type="Script" uid="uid://du5q3mivkcfj3" path="res://Scripts/hitbox.gd" id="20_331ug"]
-[ext_resource type="Script" uid="uid://cbbc8gp2dp7kf" path="res://Scripts/jump_light.gd" id="21_ny14h"]
-[ext_resource type="Script" uid="uid://lkumo0wkjj54" path="res://Scripts/player_hurtbox.gd" id="22_7ahtn"]
-[ext_resource type="Script" uid="uid://cfks5uawgsarl" path="res://Scripts/hitstun.gd" id="22_7lmhl"]
-[ext_resource type="Script" uid="uid://bn2tvqn2hpvw7" path="res://Scripts/defeat.gd" id="25_qtqh7"]
+[ext_resource type="Script" uid="uid://cbbc8gp2dp7kf" path="res://Scripts/player1_scripts/jump_light.gd" id="21_ny14h"]
+[ext_resource type="Script" uid="uid://lkumo0wkjj54" path="res://Scripts/player1_scripts/player_hurtbox.gd" id="22_7ahtn"]
+[ext_resource type="Script" uid="uid://cfks5uawgsarl" path="res://Scripts/player1_scripts/hitstun.gd" id="22_7lmhl"]
+[ext_resource type="Script" uid="uid://bn2tvqn2hpvw7" path="res://Scripts/player1_scripts/defeat.gd" id="25_qtqh7"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ibah8"]
 animations = [{
@@ -446,6 +446,8 @@ position = Vector2(504.78668, -95.50018)
 scale = Vector2(1.0350909, 1.0350909)
 sprite_frames = SubResource("SpriteFrames_ibah8")
 animation = &"p1_Idle"
+centered = false
+offset = Vector2(-1300, -1300)
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 position = Vector2(3028.7192, -450.21503)
@@ -512,7 +514,7 @@ standlight_state = NodePath(".")
 
 [node name="5L_HitboxArea" type="Area2D" parent="State Machine/Stand_Light"]
 position = Vector2(-222, 33)
-scale = Vector2(0.07329831, 0.07329831)
+scale = Vector2(0.073, 0.073)
 script = ExtResource("20_331ug")
 
 [node name="5L_hitbox" type="CollisionShape2D" parent="State Machine/Stand_Light/5L_HitboxArea"]

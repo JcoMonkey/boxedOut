@@ -7,7 +7,7 @@ var attack_complete
 @onready var hitbox_collision: CollisionShape2D = $"jL_HitboxArea/jL_hitbox"
 
 func enter() -> void:
-	print("Before enter disabled:", hitbox_area.monitoring)
+	#print("Before enter disabled:", hitbox_area.monitoring)
 	hitbox_collision.set_deferred("disabled", true)
 	hitbox_area.monitoring = true
 	hitbox_area.monitorable = true
@@ -21,7 +21,7 @@ func exit(new_state: State = null) -> void:
 	hitbox_collision.set_deferred("disabled", true)
 	hitbox_area.monitoring = false
 	hitbox_area.monitorable = false
-	print("After exit disabled:", hitbox_area.monitoring)
+	#print("After exit disabled:", hitbox_area.monitoring)
 
 	
 	attack_complete = true
@@ -44,7 +44,7 @@ func process_physics(delta: float) -> State:
 	return null
 	
 func process_frame(delta: float) -> State:
-	print("After enter enabled:", hitbox_area.monitoring)
+	#print("After enter enabled:", hitbox_area.monitoring)
 	super(delta)
 	if attack_complete: 
 		print("attack complete")

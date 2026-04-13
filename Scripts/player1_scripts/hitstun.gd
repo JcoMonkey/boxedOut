@@ -47,10 +47,10 @@ func knockback() -> void:
 	#var y_force := -10.0
 
 	#check which direction to send
-	if hurtbox.hitting_area.global_position.x < player.global_position.x:
-		player.velocity.x = -x_force
-	else:
+	if player.global_position.x > player.opponent.global_position.x:
 		player.velocity.x = x_force
+	else:
+		player.velocity.x = -x_force
 
 
 func get_move_dir() -> float:

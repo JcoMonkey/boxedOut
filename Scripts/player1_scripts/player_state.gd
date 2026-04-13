@@ -43,7 +43,15 @@ var sprite_flipped: bool = false
 # TODO later for crossing up
 # use player.sprite.flip_h = sprite_flipped
 func determine_sprite_flipped() -> void:
-	pass
+	if player.position.x > player.opponent.position.x:
+		#print("flipping p1 sprite")
+		sprite_flipped = true
+		player.sprite.offset = Vector2(-2300,-1300)
+
+	else:
+		sprite_flipped = false
+		player.sprite.offset = Vector2(-1300,-1300)
+	player.sprite.flip_h = sprite_flipped
 
 #ts kinda broken
 func process_physics(delta: float) -> State:

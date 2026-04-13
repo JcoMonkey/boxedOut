@@ -4653,10 +4653,9 @@ position = Vector2(370.00003, 518)
 scale = Vector2(0.12556988, 0.12556988)
 opponent = NodePath("../Player2")
 
-[node name="Player2" parent="." node_paths=PackedStringArray("opponent") instance=ExtResource("6_4c57u")]
-position = Vector2(923, 516)
+[node name="Player2" parent="." instance=ExtResource("6_4c57u")]
+position = Vector2(891.00006, 510.00006)
 scale = Vector2(0.12556988, 0.12556988)
-opponent = NodePath("../Player1")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 position = Vector2(642.4613, 523.90027)
@@ -4688,7 +4687,6 @@ offset_top = 29.0
 offset_right = 618.8421
 offset_bottom = 116.0
 value = 100.0
-fill_mode = 1
 script = ExtResource("9_4c57u")
 
 [node name="P2_healthbar" type="ProgressBar" parent="CanvasLayer"]
