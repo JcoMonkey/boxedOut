@@ -2,6 +2,8 @@ class_name PlayerStandLightState
 extends PlayerState
 
 var attack_complete
+@onready var hitbox: CollisionShape2D = $"5L_HitboxArea/5L_hitbox"
+
 
 func enter() -> void:
 	attack_complete = false
@@ -10,6 +12,8 @@ func enter() -> void:
 	player.animation.animation_finished.connect(func(_anim): attack_complete = true)
 	
 func exit(new_state: State = null) -> void:
+	hitbox.set_deferred("disabled", true)
+	attack_complete = true
 	super(new_state)
 	pass
 

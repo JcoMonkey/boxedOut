@@ -6,6 +6,7 @@ extends PlayerState
 var hitstun_complete
 
 func enter() -> void:
+	healthChanged.emit()
 	hitstun_complete = false
 	print("Hitstun state")
 	player.animation.play(hitstun_anim)
@@ -16,12 +17,15 @@ func exit(new_state: State = null) -> void:
 	player.velocity.x = 0
 
 func process_input(event: InputEvent) -> State:
-	knockback()
 	super(event)
 	return null
 
 func process_physics(delta: float) -> State:
-	return super(delta)
+	knockback()
+	#return super(delta)
+	player.velocity.y += gravity * delta
+	player.move_and_slide()
+	return null
 	
 func process_frame(delta: float) -> State:
 	super(delta)
@@ -36,8 +40,15 @@ func process_frame(delta: float) -> State:
 	return null
 
 func knockback() -> void:
-	var push_dir: Vector2 = hurtbox.hitting_area.global_position - player.global_position
-	player.velocity.x += push_dir.x
+	var x_force := 114.0
+	#var y_force := -10.0
+
+	#check which direction to send
+	if hurtbox.hitting_area.global_position.x < player.global_position.x:
+		player.velocity.x = -x_force
+	else:
+		player.velocity.x = x_force
+
 
 func get_move_dir() -> float:
 	print("Input axis = ", Input.get_axis(left_key, right_key))

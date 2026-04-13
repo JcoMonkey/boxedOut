@@ -7,7 +7,7 @@ extends Hurtbox
 var hitting_area: Node2D
 
 func on_area_entered(hitbox: Hitbox) -> void:
-	print("Damage")
+	print("Damage dealt player")
 	if hitbox == null: return
 	super(hitbox)
 	hitting_area = hitbox.owner

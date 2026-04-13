@@ -3,6 +3,9 @@ extends State
 
 @onready var player: Player = get_parent().get_parent()
 
+signal healthChanged
+
+
 var gravity: float = ProjectSettings.get_setting("physics/2d/default_gravity",980)
 
 # Animation names
@@ -11,6 +14,7 @@ var walk_anim: String = "Walk"
 var jump_anim: String = "Jump"
 var fall_anim: String = "Fall"
 var standlight_anim: String = "StandLight"
+var jumplight_anim: String = "JumpLight"
 var hitstun_anim: String = "Hitstun"
 
 
@@ -33,7 +37,9 @@ var light_key: String = "player1_light"
 
 # Other variables
 var sprite_flipped: bool = false
-var health: int = 100
+var totalHealth: int = 1000
+var currentHealth: int = 1000
+
 # need to track later player facing direction relative to opponent
 
 # TODO later for crossing up

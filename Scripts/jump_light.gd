@@ -3,13 +3,28 @@ extends PlayerState
 
 var attack_complete
 
+@onready var hitbox_area: Hitbox = $jL_HitboxArea
+@onready var hitbox_collision: CollisionShape2D = $"jL_HitboxArea/jL_hitbox"
+
 func enter() -> void:
+	print("Before enter disabled:", hitbox_area.monitoring)
+	hitbox_collision.set_deferred("disabled", true)
+	hitbox_area.monitoring = true
+	hitbox_area.monitorable = true
+	
 	attack_complete = false
 	print("Jump Light Attack state")
-	player.animation.play(standlight_anim)
+	player.animation.play(jumplight_anim)
 	player.animation.animation_finished.connect(func(_anim): attack_complete = true)
 	
 func exit(new_state: State = null) -> void:
+	hitbox_collision.set_deferred("disabled", true)
+	hitbox_area.monitoring = false
+	hitbox_area.monitorable = false
+	print("After exit disabled:", hitbox_area.monitoring)
+
+	
+	attack_complete = true
 	super(new_state)
 	pass
 
@@ -19,6 +34,7 @@ func process_input(event: InputEvent) -> State:
 
 func process_physics(delta: float) -> State:
 	if(player.is_on_floor()):
+		player.velocity.x = 0
 		if get_move_dir() != 0.0:
 			return walk_state
 		else: 
@@ -28,6 +44,7 @@ func process_physics(delta: float) -> State:
 	return null
 	
 func process_frame(delta: float) -> State:
+	print("After enter enabled:", hitbox_area.monitoring)
 	super(delta)
 	if attack_complete: 
 		print("attack complete")

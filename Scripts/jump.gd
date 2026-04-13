@@ -10,6 +10,7 @@ func enter() -> void:
 	player.animation.play(jump_anim)
 	#wait
 	player.velocity.y =JUMP_FORCE
+	do_move(get_move_dir())
 	
 	
 func exit(new_state: State = null) -> void:
@@ -28,7 +29,7 @@ func process_physics(delta: float) -> State:
 	#print("player velocity y= ",player.velocity.y)
 	#print("jumpstate physics ran")
 	#change later to be fixed jump arc, maintain velocity from initial jump
-	do_move(get_move_dir())
+	#do_move(get_move_dir())
 	return super(delta)
 
 func get_move_dir() -> float:
