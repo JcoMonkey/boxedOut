@@ -12,15 +12,12 @@ func enter() -> void:
 	hitbox_area.monitoring = true
 	hitbox_area.monitorable = true
 	
-	print("sprite_flipped:", sprite_flipped)
 	attack_complete = false
-	print("Jump Light Attack state")
+	print("\nP1 Jump Light Attack state")
 	
-	if sprite_flipped: 
-		hitbox_collision.scale.x *= -1
+	if player.sprite_flipped == true: 
+		hitbox_collision.position.x *= -1
 		print("hitbox flipped")
-	else: 
-		hitbox_collision.scale.x *= 1
 	
 	player.animation.play(jumplight_anim)
 	player.animation.animation_finished.connect(func(_anim): attack_complete = true)

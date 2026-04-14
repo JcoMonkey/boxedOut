@@ -20,6 +20,6 @@ func process_input(event: InputEvent) -> State:
 	return null
 
 func process_physics(delta: float) -> State:
-	determine_sprite_flipped()
+	player.update_facing()
 	return super.process_physics(delta)
 	

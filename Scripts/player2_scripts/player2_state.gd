@@ -27,29 +27,12 @@ var defeat_anim: String = "Defeat"
 @export var hitstun_state: Player2State
 @export var defeat_state: Player2State
 
-
 # Input keys MAKE SURE THEY MATCH 
 var movement_key: String = "Movement_p2"
 var left_key: String = "player2_left"
 var right_key: String = "player2_right"
 var jump_key: String = "player2_up"
 var light_key: String = "player2_light"
-
-# Other variables
-var sprite_flipped: bool = false
-
-# need to track later player facing direction relative to opponent
-
-func determine_sprite_flipped() -> void:
-	if player.position.x < player.opponent.position.x:
-		#print("flipping p2 sprite")
-		sprite_flipped = false
-		player.sprite.offset = Vector2(-1300,-1300)
-
-	else:
-		sprite_flipped = true
-		player.sprite.offset = Vector2(-2300,-1300)
-	player.sprite.flip_h = sprite_flipped
 
 #ts kinda broken
 func process_physics(delta: float) -> State:
@@ -62,4 +45,3 @@ func process_physics(delta: float) -> State:
 
 func exit(new_state: State = null) -> void:
 	super()
-	#new_state.sprite_flipped = sprite_flipped

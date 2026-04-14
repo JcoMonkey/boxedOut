@@ -24,7 +24,7 @@ func process_input(event: InputEvent) -> State:
 	return null
 
 func process_physics(delta: float) -> State:
-	determine_sprite_flipped()
+	player.update_facing()
 	print("move_dir = ", get_move_dir())
 	super.process_physics(delta)
 	if get_move_dir() == 0.0: 

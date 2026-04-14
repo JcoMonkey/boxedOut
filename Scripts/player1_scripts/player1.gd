@@ -11,6 +11,7 @@ signal healthChanged
 
 var maxHealth: int = 1000
 var currentHealth: int = 1000
+var sprite_flipped: bool = false
 
 func _ready(): state_machine.init()
 
@@ -23,3 +24,11 @@ func _input(event): state_machine.process_input(event)
 func take_damage(damage: int) -> void:
 	currentHealth  = currentHealth - damage
 	healthChanged.emit()
+
+func update_facing() -> void:
+	sprite_flipped = global_position.x > opponent.global_position.x
+	if sprite_flipped == true:
+		sprite.offset = Vector2(-2300,-1300)
+	else:
+		sprite.offset = Vector2(-1300,-1300)
+	sprite.flip_h = sprite_flipped

@@ -7,12 +7,18 @@ var attack_complete
 
 func enter() -> void:
 	attack_complete = false
-	print("Light Attack state")
+	print("\nP2 Light Attack state")
+	
+	if player.sprite_flipped == true: 
+		hitbox.position.x *= -1
+		print("hitbox flipped")
+	
 	player.animation.play(standlight_anim)
 	player.animation.animation_finished.connect(func(_anim): attack_complete = true)
 	
 func exit(new_state: State = null) -> void:
 	hitbox.set_deferred("disabled", true)
+	hitbox.position.x = abs(hitbox.position.x)
 	attack_complete = true
 	super(new_state)
 	pass

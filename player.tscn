@@ -429,7 +429,7 @@ _data = {
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3iwfv"]
-size = Vector2(881, 875)
+size = Vector2(297, 417)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qwsg1"]
 size = Vector2(14.651827, 19.850853)
@@ -439,6 +439,7 @@ size = Vector2(771.978, 890.1378)
 
 [node name="Player1" type="CharacterBody2D" groups=["Player"]]
 collision_layer = 2
+collision_mask = 9
 script = ExtResource("1_7hik5")
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
@@ -461,7 +462,7 @@ libraries = {
 }
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-32.5, 68.5)
+position = Vector2(-7.5, 297.5)
 shape = SubResource("RectangleShape2D_3iwfv")
 
 [node name="State Machine" type="Node2D" parent="." node_paths=PackedStringArray("starting_state")]

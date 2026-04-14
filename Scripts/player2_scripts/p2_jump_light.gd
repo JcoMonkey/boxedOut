@@ -12,8 +12,12 @@ func enter() -> void:
 	hitbox_area.monitoring = true
 	hitbox_area.monitorable = true
 	
+	if player.sprite_flipped == true: 
+		hitbox_collision.position.x *= -1
+		print("hitbox flipped")
+	
 	attack_complete = false
-	print("Jump Light Attack state")
+	print("\nP2 Jump Light Attack state")
 	player.animation.play(jumplight_anim)
 	player.animation.animation_finished.connect(func(_anim): attack_complete = true)
 	
@@ -23,6 +27,7 @@ func exit(new_state: State = null) -> void:
 	hitbox_area.monitorable = false
 	#print("After exit disabled:", hitbox_area.monitoring)
 
+	hitbox_collision.position.x = abs(hitbox_collision.position.x)
 	
 	attack_complete = true
 	super(new_state)
