@@ -4649,17 +4649,17 @@ tile_set = SubResource("TileSet_7mycd")
 collision_enabled = false
 
 [node name="Player1" parent="." node_paths=PackedStringArray("opponent") groups=["Camera"] instance=ExtResource("4_7mycd")]
-position = Vector2(370.00003, 518)
+position = Vector2(374.00003, 546.00006)
 scale = Vector2(0.12556988, 0.12556988)
 opponent = NodePath("../Player2")
 
 [node name="Player2" parent="." node_paths=PackedStringArray("opponent") instance=ExtResource("6_4c57u")]
-position = Vector2(923, 516)
+position = Vector2(923.00006, 546.00006)
 scale = Vector2(0.12556988, 0.12556988)
 opponent = NodePath("../Player1")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
-position = Vector2(642.4613, 523.90027)
+position = Vector2(642, 556)
 scale = Vector2(0.43148524, 0.43148524)
 
 [node name="Floor" type="CollisionShape2D" parent="StaticBody2D"]
@@ -4692,9 +4692,13 @@ fill_mode = 1
 script = ExtResource("9_4c57u")
 
 [node name="P2_healthbar" type="ProgressBar" parent="CanvasLayer"]
-offset_left = 660.0
-offset_top = 32.0
-offset_right = 1208.842
-offset_bottom = 119.0
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -628.0
+offset_top = 35.0
+offset_right = -79.15796
+offset_bottom = 122.0
+grow_horizontal = 0
 value = 100.0
 script = ExtResource("9_efxa6")

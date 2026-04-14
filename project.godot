@@ -84,5 +84,6 @@ Movement_p2={
 [layer_names]
 
 2d_physics/layer_1="World"
-2d_physics/layer_2="Player"
+2d_physics/layer_2="Player 1"
 2d_physics/layer_3="Walls"
+2d_physics/layer_4="Player 2"

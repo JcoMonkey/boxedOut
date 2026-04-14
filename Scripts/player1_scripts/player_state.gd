@@ -38,10 +38,6 @@ var light_key: String = "player1_light"
 # Other variables
 var sprite_flipped: bool = false
 
-# need to track later player facing direction relative to opponent
-
-# TODO later for crossing up
-# use player.sprite.flip_h = sprite_flipped
 func determine_sprite_flipped() -> void:
 	if player.position.x > player.opponent.position.x:
 		#print("flipping p1 sprite")
@@ -64,4 +60,3 @@ func process_physics(delta: float) -> State:
 
 func exit(new_state: State = null) -> void:
 	super()
-	#new_state.sprite_flipped = sprite_flipped
