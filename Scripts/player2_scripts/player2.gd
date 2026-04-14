@@ -5,7 +5,7 @@ extends CharacterBody2D
 @onready var animation: AnimationPlayer = $Animation
 @onready var sprite: AnimatedSprite2D = $Sprite
 
-@export var opponent: Player
+@export var opponent: Player1
 
 signal healthChanged
 

@@ -12,6 +12,7 @@ var jump_anim: String = "Jump"
 var fall_anim: String = "Fall"
 var standlight_anim: String = "StandLight"
 var jumplight_anim: String = "JumpLight"
+var standheavy_anim: String = "P2_StandHeavy"
 var hitstun_anim: String = "Hitstun"
 var defeat_anim: String = "Defeat"
 var grounddash_anim: String = "P2_GroundDash"
@@ -24,6 +25,7 @@ var grounddash_anim: String = "P2_GroundDash"
 @export var fall_state: Player2State
 @export var standlight_state: Player2State
 @export var jumplight_state: Player2State
+@export var standheavy_state: Player2State
 @export var hitstun_state: Player2State
 @export var defeat_state: Player2State
 @export var grounddash_state: Player2State
@@ -35,6 +37,7 @@ var right_key: String = "player2_right"
 var down_key: String = "player2_down"
 var jump_key: String = "player2_up"
 var light_key: String = "player2_light"
+var heavy_key: String = "player2_heavy"
 var dash_key: String = "player2_dash"
 
 #ts kinda broken

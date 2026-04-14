@@ -1,7 +1,7 @@
 class_name PlayerState
 extends State
 
-@onready var player: Player = get_parent().get_parent()
+@onready var player: CharacterBody2D = get_parent().get_parent()
 
 var gravity: float = ProjectSettings.get_setting("physics/2d/default_gravity",980)
 
@@ -42,7 +42,6 @@ var light_key: String = "player1_light"
 var heavy_key: String = "player1_heavy"
 var dash_key: String = "player1_dash"
 
-#ts kinda broken
 func process_physics(delta: float) -> State:
 	player.velocity.y += gravity * delta
 	player.move_and_slide()

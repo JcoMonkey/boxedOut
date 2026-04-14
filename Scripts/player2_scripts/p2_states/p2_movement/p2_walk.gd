@@ -21,6 +21,8 @@ func process_input(event: InputEvent) -> State:
 	elif event.is_action_pressed(light_key):
 		#print("light pressed in walk")
 		return standlight_state
+	elif event.is_action_pressed(heavy_key):
+		return standheavy_state
 	elif event.is_action_pressed(dash_key):
 		return grounddash_state
 	return null
