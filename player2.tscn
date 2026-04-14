@@ -22,8 +22,8 @@
 [ext_resource type="Script" uid="uid://cyctet8m24401" path="res://Scripts/player2_scripts/p2_jump.gd" id="19_66ff5"]
 [ext_resource type="Script" uid="uid://h0nqcidm5e65" path="res://Scripts/player2_scripts/p2_fall.gd" id="20_66ff5"]
 [ext_resource type="Script" uid="uid://clr7bkbutdl05" path="res://Scripts/player2_scripts/p2_stand_light.gd" id="21_o4c0v"]
-[ext_resource type="Script" uid="uid://du5q3mivkcfj3" path="res://Scripts/hitbox.gd" id="22_sc3oa"]
 [ext_resource type="Script" uid="uid://it0ryqxp341y" path="res://Scripts/player2_scripts/p2_jump_light.gd" id="23_1j1yk"]
+[ext_resource type="Script" uid="uid://bw6277cvexxaf" path="res://Scripts/player2_scripts/player2_hitbox.gd" id="23_5grbp"]
 [ext_resource type="Script" uid="uid://ckaftpgaxivuc" path="res://Scripts/player2_scripts/p2_hitstun.gd" id="24_66ff5"]
 [ext_resource type="Script" uid="uid://bx0dqdhmq13cc" path="res://Scripts/player2_scripts/p2_defeat.gd" id="25_66ff5"]
 [ext_resource type="Script" uid="uid://qllti7vt0cm4" path="res://Scripts/player2_scripts/player2_hurtbox.gd" id="26_66ff5"]
@@ -557,7 +557,7 @@ hitstun_state = NodePath("../Hitstun")
 [node name="5L_HitboxArea" type="Area2D" parent="State Machine/Stand_Light"]
 position = Vector2(-222, 33)
 scale = Vector2(0.07329831, 0.07329831)
-script = ExtResource("22_sc3oa")
+script = ExtResource("23_5grbp")
 
 [node name="5L_hitbox" type="CollisionShape2D" parent="State Machine/Stand_Light/5L_HitboxArea"]
 position = Vector2(800.40625, -133.9143)
@@ -576,7 +576,7 @@ hitstun_state = NodePath("../Hitstun")
 [node name="jL_HitboxArea" type="Area2D" parent="State Machine/Jump_Light"]
 position = Vector2(-222, 33)
 scale = Vector2(0.07329831, 0.07329831)
-script = ExtResource("22_sc3oa")
+script = ExtResource("23_5grbp")
 
 [node name="jL_hitbox" type="CollisionShape2D" parent="State Machine/Jump_Light/jL_HitboxArea"]
 position = Vector2(806.00006, -139)
@@ -607,6 +607,8 @@ hitstun_state = NodePath("../Hitstun")
 grounddash_state = NodePath(".")
 
 [node name="PlayerHurtbox" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 2
 script = ExtResource("26_66ff5")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerHurtbox"]

@@ -3,7 +3,7 @@ extends Player2State
 
 var attack_complete
 
-@onready var hitbox_area: Hitbox = $jL_HitboxArea
+@onready var hitbox_area: P2Hitbox = $jL_HitboxArea
 @onready var hitbox_collision: CollisionShape2D = $"jL_HitboxArea/jL_hitbox"
 
 func enter() -> void:

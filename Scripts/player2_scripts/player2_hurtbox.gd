@@ -6,6 +6,11 @@ extends Hurtbox
 
 var hitting_area: Node2D
 
+func _ready():
+	super()
+	collision_layer = 4
+	collision_mask = 2
+
 func on_area_entered(hitbox: Hitbox) -> void:
 	print("Damage dealt player")
 	if hitbox == null: return

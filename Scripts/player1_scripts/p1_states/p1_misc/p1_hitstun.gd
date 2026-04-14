@@ -1,7 +1,7 @@
 class_name PlayerHitstunState
 extends PlayerState
 
-@onready var hurtbox: PlayerHurtBox = $"../../PlayerHurtbox"
+@onready var hurtbox: Player1HurtBox = $"../../PlayerHurtbox"
 
 var hitstun_complete
 

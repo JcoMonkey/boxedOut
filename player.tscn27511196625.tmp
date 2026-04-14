@@ -25,13 +25,13 @@
 [ext_resource type="Script" uid="uid://bnksdj8lo2cx4" path="res://Scripts/player1_scripts/p1_states/p1_movement/p1_walk.gd" id="16_ek41f"]
 [ext_resource type="Script" uid="uid://cbxyrqti3xqy2" path="res://Scripts/player1_scripts/p1_states/p1_movement/jump.gd" id="17_khis8"]
 [ext_resource type="Script" uid="uid://ttcdv06j5bv3" path="res://Scripts/player1_scripts/p1_states/p1_movement/p1_fall.gd" id="18_b88wv"]
-[ext_resource type="Script" uid="uid://bfnmvu6c0nl86" path="res://Scripts/player1_scripts/p1_states/player1_attacks/p1_stand_light.gd" id="19_pgbbb"]
-[ext_resource type="Script" uid="uid://cbbc8gp2dp7kf" path="res://Scripts/player1_scripts/p1_states/player1_attacks/p1_jump_light.gd" id="21_ny14h"]
+[ext_resource type="Script" uid="uid://bfnmvu6c0nl86" path="res://Scripts/player1_scripts/p1_states/player1_attacks/stand_light.gd" id="19_pgbbb"]
+[ext_resource type="Script" uid="uid://cbbc8gp2dp7kf" path="res://Scripts/player1_scripts/p1_states/player1_attacks/jump_light.gd" id="21_ny14h"]
 [ext_resource type="Script" uid="uid://lkumo0wkjj54" path="res://Scripts/player1_scripts/player1_hurtbox.gd" id="22_7ahtn"]
 [ext_resource type="Script" uid="uid://cfks5uawgsarl" path="res://Scripts/player1_scripts/p1_states/p1_misc/p1_hitstun.gd" id="22_7lmhl"]
 [ext_resource type="Script" uid="uid://baqn5n2chw2d5" path="res://Scripts/player1_scripts/p1_states/p1_movement/p1_dash.gd" id="25_2wuci"]
 [ext_resource type="Script" uid="uid://bn2tvqn2hpvw7" path="res://Scripts/player1_scripts/p1_states/p1_misc/p1_defeat.gd" id="25_qtqh7"]
-[ext_resource type="Script" uid="uid://cw44c17rn41rx" path="res://Scripts/player1_scripts/player1_hitbox.gd" id="29_tkwlq"]
+[ext_resource type="Script" uid="uid://bw6277cvexxaf" path="res://Scripts/player2_scripts/p2_hitbox.gd" id="27_hiqhm"]
 [ext_resource type="Script" uid="uid://b0wym1mkfej7f" path="res://Scripts/player1_scripts/p1_states/player1_attacks/p1_stand_heavy.gd" id="32_hiqhm"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ibah8"]
@@ -660,7 +660,7 @@ standlight_state = NodePath(".")
 position = Vector2(-222, 33)
 scale = Vector2(0.073, 0.073)
 collision_mask = 8
-script = ExtResource("29_tkwlq")
+script = ExtResource("27_hiqhm")
 
 [node name="5L_hitbox" type="CollisionShape2D" parent="State Machine/Stand_Light/5L_HitboxArea"]
 position = Vector2(684.7869, -347.15762)
@@ -680,7 +680,7 @@ jumplight_state = NodePath(".")
 position = Vector2(-222, 33)
 scale = Vector2(0.07329831, 0.07329831)
 collision_mask = 8
-script = ExtResource("29_tkwlq")
+script = ExtResource("27_hiqhm")
 
 [node name="jL_hitbox" type="CollisionShape2D" parent="State Machine/Jump_Light/jL_HitboxArea"]
 position = Vector2(674, -186)
@@ -698,7 +698,7 @@ walk_state = NodePath("../Walk")
 [node name="5H_HitboxArea" type="Area2D" parent="State Machine/Stand_Heavy"]
 position = Vector2(-221.99998, 33)
 scale = Vector2(0.073298305, 0.073298305)
-script = ExtResource("29_tkwlq")
+script = ExtResource("27_hiqhm")
 
 [node name="5H_hitbox" type="CollisionShape2D" parent="State Machine/Stand_Heavy/5H_HitboxArea"]
 position = Vector2(1094.4994, 582.4999)
@@ -728,8 +728,6 @@ grounddash_state = NodePath(".")
 script = ExtResource("25_qtqh7")
 
 [node name="PlayerHurtbox" type="Area2D" parent="."]
-collision_layer = 2
-collision_mask = 8
 script = ExtResource("22_7ahtn")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerHurtbox"]

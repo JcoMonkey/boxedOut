@@ -1,15 +1,15 @@
-class_name PlayerJumpLightState
+class_name Player1JumpLightState
 extends PlayerState
 
 var attack_complete
 
-@onready var hitbox_area: Hitbox = $"jL_HitboxArea"
+@onready var hitbox_area: P1Hitbox = $"jL_HitboxArea"
 @onready var hitbox_collision: CollisionShape2D = $"jL_HitboxArea/jL_hitbox"
 
 func enter() -> void:
 	#print("Before enter disabled:", hitbox_area.monitoring)
 	hitbox_collision.set_deferred("disabled", true)
-	hitbox_area.monitoring = true
+	hitbox_area .monitoring = true
 	hitbox_area.monitorable = true
 	
 	attack_complete = false

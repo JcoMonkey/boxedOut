@@ -26,7 +26,16 @@ func process_input(event: InputEvent) -> State:
 	super(event)
 	return null
 
-func process_physics(delta: float) -> State:
+func process_physics(delta: float) -> State: 
+	#print("5h delta = ",  delta)
+	player.velocity.x = 0
+
+	if hitbox.disabled == false:
+		if player.sprite_flipped == false:
+			player.velocity.x = 1500
+		else:
+			player.velocity.x = -1500
+	
 	super.process_physics(delta)
 	return null
 	
