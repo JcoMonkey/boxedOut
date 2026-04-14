@@ -657,6 +657,7 @@ standlight_state = NodePath(".")
 [node name="5L_HitboxArea" type="Area2D" parent="State Machine/Stand_Light"]
 collision_mask = 8
 script = ExtResource("29_tkwlq")
+damage = 80
 
 [node name="5L_hitbox" type="CollisionShape2D" parent="State Machine/Stand_Light/5L_HitboxArea"]
 position = Vector2(684.7869, -347.15762)
@@ -675,6 +676,7 @@ jumplight_state = NodePath(".")
 [node name="jL_HitboxArea" type="Area2D" parent="State Machine/Jump_Light"]
 collision_mask = 8
 script = ExtResource("29_tkwlq")
+damage = 50
 
 [node name="jL_hitbox" type="CollisionShape2D" parent="State Machine/Jump_Light/jL_HitboxArea"]
 position = Vector2(674, -186)
@@ -691,6 +693,7 @@ walk_state = NodePath("../Walk")
 
 [node name="5H_HitboxArea" type="Area2D" parent="State Machine/Stand_Heavy"]
 script = ExtResource("29_tkwlq")
+damage = 150
 
 [node name="5H_hitbox" type="CollisionShape2D" parent="State Machine/Stand_Heavy/5H_HitboxArea"]
 position = Vector2(1072.3568, 626.67053)

@@ -638,6 +638,7 @@ hitstun_state = NodePath("../Hitstun")
 
 [node name="5L_HitboxArea" type="Area2D" parent="State Machine/Stand_Light"]
 script = ExtResource("23_5grbp")
+damage = 80
 
 [node name="5L_hitbox" type="CollisionShape2D" parent="State Machine/Stand_Light/5L_HitboxArea"]
 position = Vector2(673.5, -342)
@@ -654,6 +655,7 @@ hitstun_state = NodePath("../Hitstun")
 
 [node name="jL_HitboxArea" type="Area2D" parent="State Machine/Jump_Light"]
 script = ExtResource("23_5grbp")
+damage = 50
 
 [node name="jL_hitbox" type="CollisionShape2D" parent="State Machine/Jump_Light/jL_HitboxArea"]
 position = Vector2(673.8147, -180.28064)
@@ -670,6 +672,7 @@ standheavy_state = NodePath(".")
 
 [node name="5H_HitboxArea" type="Area2D" parent="State Machine/Stand_Heavy"]
 script = ExtResource("23_5grbp")
+damage = 150
 
 [node name="5H_hitbox" type="CollisionShape2D" parent="State Machine/Stand_Heavy/5H_HitboxArea"]
 position = Vector2(1082.232, 590.5)

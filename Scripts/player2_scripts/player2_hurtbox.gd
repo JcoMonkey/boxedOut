@@ -12,8 +12,9 @@ func _ready():
 	collision_mask = 2
 
 func on_area_entered(hitbox: Hitbox) -> void:
+	player.take_damage(hitbox.damage)
+	print("Player 2 health = ",player.currentHealth)
 	print("Damage dealt player")
 	if hitbox == null: return
 	super(hitbox)
-	hitting_area = hitbox.owner
 	state_machine.change_state(hitstun_state)

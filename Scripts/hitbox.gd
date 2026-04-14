@@ -1,9 +1,11 @@
 class_name Hitbox
 extends Area2D
 
-# add class variables
+@export var damage: int = 100
+#@export var knockback: float = 100.0
 
 func _ready():
+	
 	pass
 	#collision_layer = 2
 	#collision_mask = 0

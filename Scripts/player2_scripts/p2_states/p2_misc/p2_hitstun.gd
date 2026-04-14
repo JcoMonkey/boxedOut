@@ -6,8 +6,6 @@ extends Player2State
 var hitstun_complete
 
 func enter() -> void:
-	player.take_damage(100)
-	print("Player 2 health = ",player.currentHealth)
 	hitstun_complete = false
 	print("P2 Hitstun state")
 	player.animation.play(hitstun_anim)
