@@ -13,6 +13,7 @@ var fall_anim: String = "Fall"
 var standlight_anim: String = "StandLight"
 var jumplight_anim: String = "JumpLight"
 var standheavy_anim: String = "P2_StandHeavy"
+var jumpheavy_anim: String = "P2_JumpHeavy"
 var hitstun_anim: String = "Hitstun"
 var defeat_anim: String = "Defeat"
 var grounddash_anim: String = "P2_GroundDash"
@@ -26,6 +27,7 @@ var grounddash_anim: String = "P2_GroundDash"
 @export var standlight_state: Player2State
 @export var jumplight_state: Player2State
 @export var standheavy_state: Player2State
+@export var jumpheavy_state: Player2State
 @export var hitstun_state: Player2State
 @export var defeat_state: Player2State
 @export var grounddash_state: Player2State

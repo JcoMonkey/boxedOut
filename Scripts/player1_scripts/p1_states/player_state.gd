@@ -17,6 +17,7 @@ var jumpheavy_anim: String = "P1_JumpHeavy"
 var hitstun_anim: String = "Hitstun"
 var defeat_anim: String = "Defeat"
 var grounddash_anim: String = "P1_GroundDash"
+var airdash_anim: String = "P1_GroundDash"
 
 # States (ADD AS EXTERnAL VARIABLES AND LINK IN EDITOR)
 @export_group("States")
@@ -31,6 +32,7 @@ var grounddash_anim: String = "P1_GroundDash"
 @export var hitstun_state: PlayerState
 @export var defeat_state: PlayerState
 @export var grounddash_state: PlayerState
+@export var airdash_state: PlayerState
 
 # Input keys MAKE SURE THEY MATCH 
 var movement_key: String = "Movement"

@@ -1,12 +1,12 @@
-class_name Player2JumpState
-extends Player2State
+class_name Player1AirDashState
+extends PlayerState
 
 const AIR_SPEED: float = 330
 const JUMP_FORCE: float = -600
 
 func enter() -> void:
 	super()
-	print("p2 Jump state")
+	print("Jump state")
 	player.animation.play(jump_anim)
 	#wait
 	player.velocity.y =JUMP_FORCE

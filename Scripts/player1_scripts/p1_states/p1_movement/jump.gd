@@ -22,6 +22,8 @@ func exit(new_state: State = null) -> void:
 func process_input(event: InputEvent) -> State:
 	if event.is_action_pressed(light_key):
 		return jumplight_state
+	if event.is_action_pressed(heavy_key):
+		return jumpheavy_state
 
 	return null
 
