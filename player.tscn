@@ -1,8 +1,9 @@
-[gd_scene load_steps=41 format=3 uid="uid://2bblk5htisam"]
+[gd_scene load_steps=44 format=3 uid="uid://2bblk5htisam"]
 
 [ext_resource type="Script" uid="uid://crugnjbeh6vld" path="res://Scripts/player1_scripts/player1.gd" id="1_7hik5"]
 [ext_resource type="Texture2D" uid="uid://bbdkn41442hml" path="res://assets/player/player1/player1_idle/squaresam_idle1_big.png" id="2_7ahtn"]
 [ext_resource type="Texture2D" uid="uid://dfxa8gkla2uap" path="res://assets/player/player1/player1_idle/squaresam_idle2_big.png" id="3_7lmhl"]
+[ext_resource type="Texture2D" uid="uid://clitoasaaf0sy" path="res://assets/player/player1/player1_dash/squaresam_airdash1_v1.png" id="4_2wuci"]
 [ext_resource type="Texture2D" uid="uid://ccydergquae1e" path="res://assets/player/player1/player1_misc/squaresam_ko.png" id="4_7hik5"]
 [ext_resource type="Texture2D" uid="uid://bypooewvg6j8r" path="res://assets/player/player1/player1_jump/squaresam_jump3_big.png" id="4_dx0e4"]
 [ext_resource type="Texture2D" uid="uid://b8jx1kf863qwh" path="res://assets/player/player1/player1_standLight/squaresam_lightground_1_big.png" id="5_jm5j8"]
@@ -25,6 +26,7 @@
 [ext_resource type="Script" uid="uid://cbbc8gp2dp7kf" path="res://Scripts/player1_scripts/jump_light.gd" id="21_ny14h"]
 [ext_resource type="Script" uid="uid://lkumo0wkjj54" path="res://Scripts/player1_scripts/player_hurtbox.gd" id="22_7ahtn"]
 [ext_resource type="Script" uid="uid://cfks5uawgsarl" path="res://Scripts/player1_scripts/hitstun.gd" id="22_7lmhl"]
+[ext_resource type="Script" uid="uid://baqn5n2chw2d5" path="res://Scripts/player1_scripts/p1_dash.gd" id="25_2wuci"]
 [ext_resource type="Script" uid="uid://bn2tvqn2hpvw7" path="res://Scripts/player1_scripts/defeat.gd" id="25_qtqh7"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ibah8"]
@@ -39,6 +41,14 @@ animations = [{
 "loop": true,
 "name": &"p1_Idle",
 "speed": 2.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_2wuci")
+}],
+"loop": true,
+"name": &"p1_dash",
+"speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -415,6 +425,35 @@ tracks/1/keys = {
 "values": [0, 1]
 }
 
+[sub_resource type="Animation" id="Animation_2wuci"]
+resource_name = "P1_GroundDash"
+length = 0.20000167
+step = 0.016666668
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"p1_dash"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ycdy4"]
 _data = {
 &"Defeat": SubResource("Animation_7hik5"),
@@ -423,6 +462,7 @@ _data = {
 &"Idle": SubResource("Animation_ycdy4"),
 &"Jump": SubResource("Animation_2cqfq"),
 &"JumpLight": SubResource("Animation_5tmop"),
+&"P1_GroundDash": SubResource("Animation_2wuci"),
 &"RESET": SubResource("Animation_dg77c"),
 &"StandLight": SubResource("Animation_82xsv"),
 &"Walk": SubResource("Animation_w48qg")
@@ -471,7 +511,7 @@ scale = Vector2(13.6428795, 13.6428795)
 script = ExtResource("14_tkwlq")
 starting_state = NodePath("Idle")
 
-[node name="Idle" type="Node2D" parent="State Machine" node_paths=PackedStringArray("idle_state", "walk_state", "jump_state", "fall_state", "standlight_state", "hitstun_state")]
+[node name="Idle" type="Node2D" parent="State Machine" node_paths=PackedStringArray("idle_state", "walk_state", "jump_state", "fall_state", "standlight_state", "hitstun_state", "grounddash_state")]
 script = ExtResource("15_hl5qd")
 idle_state = NodePath(".")
 walk_state = NodePath("../Walk")
@@ -479,8 +519,9 @@ jump_state = NodePath("../Jump")
 fall_state = NodePath("../Fall")
 standlight_state = NodePath("../Stand_Light")
 hitstun_state = NodePath("../Hitstun")
+grounddash_state = NodePath("../GroundDash")
 
-[node name="Walk" type="Node2D" parent="State Machine" node_paths=PackedStringArray("idle_state", "walk_state", "jump_state", "fall_state", "standlight_state", "hitstun_state")]
+[node name="Walk" type="Node2D" parent="State Machine" node_paths=PackedStringArray("idle_state", "walk_state", "jump_state", "fall_state", "standlight_state", "hitstun_state", "grounddash_state")]
 script = ExtResource("16_ek41f")
 idle_state = NodePath("../Idle")
 walk_state = NodePath(".")
@@ -488,6 +529,7 @@ jump_state = NodePath("../Jump")
 fall_state = NodePath("../Fall")
 standlight_state = NodePath("../Stand_Light")
 hitstun_state = NodePath("../Hitstun")
+grounddash_state = NodePath("../GroundDash")
 
 [node name="Jump" type="Node2D" parent="State Machine" node_paths=PackedStringArray("jump_state", "fall_state", "jumplight_state", "hitstun_state")]
 script = ExtResource("17_khis8")
@@ -555,7 +597,13 @@ fall_state = NodePath("../Fall")
 hitstun_state = NodePath(".")
 defeat_state = NodePath("../Defeat")
 
-[node name="Block" type="Node2D" parent="State Machine"]
+[node name="GroundDash" type="Node2D" parent="State Machine" node_paths=PackedStringArray("idle_state", "walk_state", "jump_state", "hitstun_state", "grounddash_state")]
+script = ExtResource("25_2wuci")
+idle_state = NodePath("../Idle")
+walk_state = NodePath("../Walk")
+jump_state = NodePath("../Jump")
+hitstun_state = NodePath("../Hitstun")
+grounddash_state = NodePath(".")
 
 [node name="Defeat" type="Node2D" parent="State Machine"]
 script = ExtResource("25_qtqh7")

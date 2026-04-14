@@ -14,7 +14,7 @@ var standlight_anim: String = "StandLight"
 var jumplight_anim: String = "JumpLight"
 var hitstun_anim: String = "Hitstun"
 var defeat_anim: String = "Defeat"
-
+var grounddash_anim: String = "P2_GroundDash"
 
 # States (ADD AS EXTERnAL VARIABLES AND LINK IN EDITOR)
 @export_group("States")
@@ -26,13 +26,16 @@ var defeat_anim: String = "Defeat"
 @export var jumplight_state: Player2State
 @export var hitstun_state: Player2State
 @export var defeat_state: Player2State
+@export var grounddash_state: Player2State
 
 # Input keys MAKE SURE THEY MATCH 
 var movement_key: String = "Movement_p2"
 var left_key: String = "player2_left"
 var right_key: String = "player2_right"
+var down_key: String = "player2_down"
 var jump_key: String = "player2_up"
 var light_key: String = "player2_light"
+var dash_key: String = "player2_dash"
 
 #ts kinda broken
 func process_physics(delta: float) -> State:

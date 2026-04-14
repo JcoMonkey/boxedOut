@@ -21,6 +21,8 @@ func process_input(event: InputEvent) -> State:
 	elif event.is_action_pressed(light_key):
 		#print("light pressed in walk")
 		return standlight_state
+	elif event.is_action_pressed(dash_key):
+		return grounddash_state
 	return null
 
 func process_physics(delta: float) -> State:
@@ -29,7 +31,6 @@ func process_physics(delta: float) -> State:
 	super.process_physics(delta)
 	if get_move_dir() == 0.0: 
 		return idle_state
-		
 	do_move(get_move_dir())
 
 	return null

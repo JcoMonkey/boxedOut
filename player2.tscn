@@ -1,6 +1,7 @@
-[gd_scene load_steps=41 format=3 uid="uid://cqtqjpnmwkos6"]
+[gd_scene load_steps=44 format=3 uid="uid://cqtqjpnmwkos6"]
 
 [ext_resource type="Script" uid="uid://dpi6r6nhvyo8r" path="res://Scripts/player2_scripts/player2.gd" id="1_66ff5"]
+[ext_resource type="Texture2D" uid="uid://clitoasaaf0sy" path="res://assets/player/player1/player1_dash/squaresam_airdash1_v1.png" id="2_1j1yk"]
 [ext_resource type="Texture2D" uid="uid://bbdkn41442hml" path="res://assets/player/player1/player1_idle/squaresam_idle1_big.png" id="2_o4c0v"]
 [ext_resource type="Texture2D" uid="uid://dfxa8gkla2uap" path="res://assets/player/player1/player1_idle/squaresam_idle2_big.png" id="3_1j1yk"]
 [ext_resource type="Texture2D" uid="uid://ccydergquae1e" path="res://assets/player/player1/player1_misc/squaresam_ko.png" id="4_5grbp"]
@@ -26,6 +27,7 @@
 [ext_resource type="Script" uid="uid://ckaftpgaxivuc" path="res://Scripts/player2_scripts/p2_hitstun.gd" id="24_66ff5"]
 [ext_resource type="Script" uid="uid://bx0dqdhmq13cc" path="res://Scripts/player2_scripts/p2_defeat.gd" id="25_66ff5"]
 [ext_resource type="Script" uid="uid://qllti7vt0cm4" path="res://Scripts/player2_scripts/player2_hurtbox.gd" id="26_66ff5"]
+[ext_resource type="Script" uid="uid://bxp842xvlcohn" path="res://Scripts/player2_scripts/p2_grounddash.gd" id="26_o4c0v"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ibah8"]
 animations = [{
@@ -105,6 +107,14 @@ animations = [{
 "loop": true,
 "name": &"p1_walk",
 "speed": 4.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_1j1yk")
+}],
+"loop": true,
+"name": &"p2_grounddash",
+"speed": 5.0
 }]
 
 [sub_resource type="Animation" id="Animation_7hik5"]
@@ -416,6 +426,35 @@ tracks/1/keys = {
 "values": [0, 1]
 }
 
+[sub_resource type="Animation" id="Animation_1j1yk"]
+resource_name = "P2_GroundDash"
+length = 0.20000167
+step = 0.016666668
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"p2_grounddash"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ycdy4"]
 _data = {
 &"Defeat": SubResource("Animation_7hik5"),
@@ -424,6 +463,7 @@ _data = {
 &"Idle": SubResource("Animation_ycdy4"),
 &"Jump": SubResource("Animation_2cqfq"),
 &"JumpLight": SubResource("Animation_5tmop"),
+&"P2_GroundDash": SubResource("Animation_1j1yk"),
 &"RESET": SubResource("Animation_dg77c"),
 &"StandLight": SubResource("Animation_82xsv"),
 &"Walk": SubResource("Animation_w48qg")
@@ -556,6 +596,10 @@ defeat_state = NodePath("../Defeat")
 [node name="Defeat" type="Node2D" parent="State Machine" node_paths=PackedStringArray("defeat_state")]
 script = ExtResource("25_66ff5")
 defeat_state = NodePath(".")
+
+[node name="GroundDash" type="Node2D" parent="State Machine" node_paths=PackedStringArray("grounddash_state")]
+script = ExtResource("26_o4c0v")
+grounddash_state = NodePath(".")
 
 [node name="PlayerHurtbox" type="Area2D" parent="."]
 script = ExtResource("26_66ff5")
