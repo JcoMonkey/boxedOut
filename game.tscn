@@ -1,17 +1,18 @@
-[gd_scene load_steps=18 format=4 uid="uid://c033oja3lxwkr"]
+[gd_scene load_steps=19 format=4 uid="uid://c033oja3lxwkr"]
 
-[ext_resource type="Script" uid="uid://dodhuqfr8s0tv" path="res://Scripts/main.gd" id="1_5vw27"]
-[ext_resource type="Texture2D" uid="uid://criaeocvwxfs2" path="res://assets/boxingring.png" id="2_5vw27"]
-[ext_resource type="Texture2D" uid="uid://dw7t4f4qqub5u" path="res://assets/tilemap.png" id="4_1bvp3"]
-[ext_resource type="PackedScene" uid="uid://2bblk5htisam" path="res://player.tscn" id="4_7mycd"]
-[ext_resource type="Texture2D" uid="uid://bol3cy0t8qxdw" path="res://assets/tileset.png" id="5_lquwl"]
-[ext_resource type="PackedScene" uid="uid://cqtqjpnmwkos6" path="res://player2.tscn" id="6_4c57u"]
-[ext_resource type="Script" uid="uid://601nok4jxcqd" path="res://Scripts/player1_scripts/healthbar.gd" id="9_4c57u"]
-[ext_resource type="Script" uid="uid://dpehiefobiads" path="res://Scripts/player2_scripts/p2_healthbar.gd" id="9_efxa6"]
-[ext_resource type="Script" uid="uid://ssm4uy56jx6f" path="res://Scripts/camera_2d.gd" id="9_kek77"]
+[ext_resource type="Script" uid="uid://dodhuqfr8s0tv" path="res://Scripts/main.gd" id="1_hve3p"]
+[ext_resource type="Texture2D" uid="uid://criaeocvwxfs2" path="res://assets/boxingring.png" id="2_mfdv2"]
+[ext_resource type="Texture2D" uid="uid://bol3cy0t8qxdw" path="res://assets/tileset.png" id="3_iotsf"]
+[ext_resource type="Texture2D" uid="uid://dw7t4f4qqub5u" path="res://assets/tilemap.png" id="4_lc2xo"]
+[ext_resource type="PackedScene" uid="uid://2bblk5htisam" path="res://player.tscn" id="5_215e1"]
+[ext_resource type="PackedScene" uid="uid://cqtqjpnmwkos6" path="res://player2.tscn" id="6_7sc4i"]
+[ext_resource type="Script" uid="uid://ssm4uy56jx6f" path="res://Scripts/camera_2d.gd" id="7_80cx4"]
+[ext_resource type="Script" uid="uid://601nok4jxcqd" path="res://Scripts/player1_scripts/healthbar.gd" id="8_e8heu"]
+[ext_resource type="Script" uid="uid://dpehiefobiads" path="res://Scripts/player2_scripts/p2_healthbar.gd" id="9_rvswv"]
+[ext_resource type="PackedScene" uid="uid://bube7jfn62cug" path="res://pause_menu.tscn" id="10_boyg6"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_272bh"]
-texture = ExtResource("5_lquwl")
+texture = ExtResource("3_iotsf")
 0:0/0 = 0
 1:0/0 = 0
 2:0/0 = 0
@@ -531,7 +532,7 @@ texture = ExtResource("5_lquwl")
 9:22/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5vw27"]
-texture = ExtResource("4_1bvp3")
+texture = ExtResource("4_lc2xo")
 0:0/0 = 0
 1:0/0 = 0
 2:0/0 = 0
@@ -3066,7 +3067,7 @@ sources/0 = SubResource("TileSetAtlasSource_272bh")
 sources/1 = SubResource("TileSetAtlasSource_5vw27")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lquwl"]
-texture = ExtResource("4_1bvp3")
+texture = ExtResource("4_lc2xo")
 margins = Vector2i(0, 33)
 0:0/0 = 0
 0:0/0/texture_origin = Vector2i(2, 0)
@@ -4090,7 +4091,7 @@ margins = Vector2i(0, 33)
 66:43/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7mycd"]
-texture = ExtResource("5_lquwl")
+texture = ExtResource("3_iotsf")
 0:0/0 = 0
 1:0/0 = 0
 2:0/0 = 0
@@ -4624,12 +4625,12 @@ size = Vector2(4803, 590)
 size = Vector2(573.975, 2414.331)
 
 [node name="Main" type="Node2D"]
-script = ExtResource("1_5vw27")
+script = ExtResource("1_hve3p")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(641.4613, 358.9003)
 scale = Vector2(0.30529395, 0.30707264)
-texture = ExtResource("2_5vw27")
+texture = ExtResource("2_mfdv2")
 
 [node name="TileMapLayerBackground" type="TileMapLayer" parent="."]
 physics_interpolation_mode = 2
@@ -4648,12 +4649,12 @@ tile_map_data = PackedByteArray("AADz//7/AAA0ABYAAADz////AAA0ABcAAADz/wAAAAA0ABg
 tile_set = SubResource("TileSet_7mycd")
 collision_enabled = false
 
-[node name="Player1" parent="." node_paths=PackedStringArray("opponent") groups=["Camera"] instance=ExtResource("4_7mycd")]
+[node name="Player1" parent="." node_paths=PackedStringArray("opponent") groups=["Camera"] instance=ExtResource("5_215e1")]
 position = Vector2(374.00003, 546.00006)
 scale = Vector2(0.12556988, 0.12556988)
 opponent = NodePath("../Player2")
 
-[node name="Player2" parent="." node_paths=PackedStringArray("opponent") instance=ExtResource("6_4c57u")]
+[node name="Player2" parent="." node_paths=PackedStringArray("opponent") instance=ExtResource("6_7sc4i")]
 position = Vector2(923.00006, 546.00006)
 scale = Vector2(0.12556988, 0.12556988)
 opponent = NodePath("../Player1")
@@ -4679,7 +4680,7 @@ shape = SubResource("RectangleShape2D_2cqfq")
 position = Vector2(643, 359)
 scale = Vector2(0.9512342, 0.9512342)
 zoom = Vector2(1.1, 1.1)
-script = ExtResource("9_kek77")
+script = ExtResource("7_80cx4")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -4692,7 +4693,7 @@ theme_override_colors/font_color = Color(0.99762195, 0.16419637, 0.045165412, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 value = 100.0
 fill_mode = 1
-script = ExtResource("9_4c57u")
+script = ExtResource("8_e8heu")
 
 [node name="P2_healthbar" type="ProgressBar" parent="CanvasLayer"]
 anchors_preset = 1
@@ -4706,4 +4707,7 @@ grow_horizontal = 0
 theme_override_colors/font_color = Color(0, 0.5619496, 0.94904333, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 value = 100.0
-script = ExtResource("9_efxa6")
+script = ExtResource("9_rvswv")
+
+[node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("10_boyg6")]
+visible = false
