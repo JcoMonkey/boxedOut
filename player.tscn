@@ -751,13 +751,14 @@ jumpheavy_state = NodePath("../Jump_Heavy")
 hitstun_state = NodePath("../Hitstun")
 airdash_state = NodePath("../AirDash")
 
-[node name="Stand_Light" type="Node2D" parent="State Machine" node_paths=PackedStringArray("idle_state", "walk_state", "jump_state", "fall_state", "standlight_state")]
+[node name="Stand_Light" type="Node2D" parent="State Machine" node_paths=PackedStringArray("idle_state", "walk_state", "jump_state", "fall_state", "standlight_state", "standheavy_state")]
 script = ExtResource("19_pgbbb")
 idle_state = NodePath("../Idle")
 walk_state = NodePath("../Walk")
 jump_state = NodePath("../Jump")
 fall_state = NodePath("../Fall")
 standlight_state = NodePath(".")
+standheavy_state = NodePath("../Stand_Heavy")
 
 [node name="5L_HitboxArea" type="Area2D" parent="State Machine/Stand_Light"]
 collision_mask = 8
@@ -771,17 +772,18 @@ shape = SubResource("RectangleShape2D_hiqhm")
 disabled = true
 debug_color = Color(0.920751, 0.22778282, 0.42216197, 0.41960785)
 
-[node name="Jump_Light" type="Node2D" parent="State Machine" node_paths=PackedStringArray("idle_state", "walk_state", "fall_state", "jumplight_state")]
+[node name="Jump_Light" type="Node2D" parent="State Machine" node_paths=PackedStringArray("idle_state", "walk_state", "fall_state", "jumplight_state", "jumpheavy_state")]
 script = ExtResource("21_ny14h")
 idle_state = NodePath("../Idle")
 walk_state = NodePath("../Walk")
 fall_state = NodePath("../Fall")
 jumplight_state = NodePath(".")
+jumpheavy_state = NodePath("../Jump_Heavy")
 
 [node name="jL_HitboxArea" type="Area2D" parent="State Machine/Jump_Light"]
 collision_mask = 8
 script = ExtResource("29_tkwlq")
-damage = 50
+damage = 40
 
 [node name="jL_hitbox" type="CollisionShape2D" parent="State Machine/Jump_Light/jL_HitboxArea"]
 position = Vector2(628.0739, -186)
@@ -817,7 +819,7 @@ hitstun_state = NodePath("../Hitstun")
 [node name="jH_HitboxArea" type="Area2D" parent="State Machine/Jump_Heavy"]
 collision_mask = 8
 script = ExtResource("29_tkwlq")
-damage = 90
+damage = 60
 
 [node name="jH_hitbox" type="CollisionShape2D" parent="State Machine/Jump_Heavy/jH_HitboxArea"]
 position = Vector2(794.75, 446.5)

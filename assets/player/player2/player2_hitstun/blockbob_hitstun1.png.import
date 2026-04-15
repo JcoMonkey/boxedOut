@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://djri55x67sd6u"
-path="res://.godot/imported/blockbob_idle1.png-9ffe81f0f9d9484437d2f0f4f5cefd65.ctex"
+uid="uid://d176kh0lw1y8x"
+path="res://.godot/imported/blockbob_hitstun1.png-bd232bb00886b3d57665e4aeca5550fd.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/player/player2/blockbob_idle1.png"
-dest_files=["res://.godot/imported/blockbob_idle1.png-9ffe81f0f9d9484437d2f0f4f5cefd65.ctex"]
+source_file="res://assets/player/player2/player2_hitstun/blockbob_hitstun1.png"
+dest_files=["res://.godot/imported/blockbob_hitstun1.png-bd232bb00886b3d57665e4aeca5550fd.ctex"]
 
 [params]
 

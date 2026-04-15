@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://sb48k4uc24l0"
-path="res://.godot/imported/block_bob_heavyground5.png-2fc99c62192f403ba491eb9bdb89af31.ctex"
+uid="uid://cywk7y4cgwbfv"
+path="res://.godot/imported/block_bob_heavyground4.png-f822614515ced0b99b0b4d051b207f97.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/player/player2/p2_standheavy/block_bob_heavyground5.png"
-dest_files=["res://.godot/imported/block_bob_heavyground5.png-2fc99c62192f403ba491eb9bdb89af31.ctex"]
+source_file="res://assets/player/player2/player2_standheavy/block_bob_heavyground4.png"
+dest_files=["res://.godot/imported/block_bob_heavyground4.png-f822614515ced0b99b0b4d051b207f97.ctex"]
 
 [params]
 

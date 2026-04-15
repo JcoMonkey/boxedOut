@@ -35,6 +35,8 @@ func exit(new_state: State = null) -> void:
 
 func process_input(event: InputEvent) -> State:
 	super(event)
+	if event.is_action_pressed(heavy_key):
+		return jumpheavy_state
 	return null
 
 func process_physics(delta: float) -> State:
