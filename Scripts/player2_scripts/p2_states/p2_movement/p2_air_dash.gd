@@ -1,5 +1,5 @@
-class_name Player1AirDashState
-extends PlayerState
+class_name Player2AirDashState
+extends Player2State
 
 const AIRDASH_SPEED: float = 777
 
@@ -63,6 +63,7 @@ func get_move_dir() -> Vector2:
 	#print("Input axis x = ", Input.get_axis(left_key, right_key))
 	var y_dir = Input.get_axis(jump_key, down_key)
 	#print("Input axis y = ", Input.get_axis(left_key, right_key))
+
 	return Vector2(x_dir, y_dir)
 
 func do_move(move_dir: Vector2) -> void:

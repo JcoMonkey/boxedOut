@@ -23,7 +23,7 @@
 [ext_resource type="Script" uid="uid://dkrtexlliu4k8" path="res://Scripts/state_machine.gd" id="14_tkwlq"]
 [ext_resource type="Script" uid="uid://jjujkgsq8pwa" path="res://Scripts/player1_scripts/p1_states/p1_misc/p1_idle.gd" id="15_hl5qd"]
 [ext_resource type="Script" uid="uid://bnksdj8lo2cx4" path="res://Scripts/player1_scripts/p1_states/p1_movement/p1_walk.gd" id="16_ek41f"]
-[ext_resource type="Script" uid="uid://cbxyrqti3xqy2" path="res://Scripts/player1_scripts/p1_states/p1_movement/jump.gd" id="17_khis8"]
+[ext_resource type="Script" uid="uid://cbxyrqti3xqy2" path="res://Scripts/player1_scripts/p1_states/p1_movement/p1_jump.gd" id="17_khis8"]
 [ext_resource type="Script" uid="uid://ttcdv06j5bv3" path="res://Scripts/player1_scripts/p1_states/p1_movement/p1_fall.gd" id="18_b88wv"]
 [ext_resource type="Script" uid="uid://bfnmvu6c0nl86" path="res://Scripts/player1_scripts/p1_states/p1_attacks/p1_stand_light.gd" id="19_pgbbb"]
 [ext_resource type="Script" uid="uid://cbbc8gp2dp7kf" path="res://Scripts/player1_scripts/p1_states/p1_attacks/p1_jump_light.gd" id="21_ny14h"]
@@ -318,6 +318,18 @@ tracks/1/keys = {
 "update": 1,
 "values": [0, 1, 2]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("PlayerHurtbox:monitoring")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.050000004),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
 
 [sub_resource type="Animation" id="Animation_5tmop"]
 resource_name = "JumpLight"
@@ -387,6 +399,47 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_tkwlq"]
+resource_name = "P1_JumpHeavy"
+length = 0.88333505
+step = 0.016666668
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"p1_jump_5H"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.050000004, 0.13333334, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("State Machine/Jump_Heavy/jH_HitboxArea/jH_hitbox:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.21666667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, false, true]
 }
 
 [sub_resource type="Animation" id="Animation_hiqhm"]
@@ -505,6 +558,18 @@ tracks/5/keys = {
 "update": 1,
 "values": [true]
 }
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("PlayerHurtbox:monitoring")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="Animation" id="Animation_82xsv"]
 resource_name = "StandLight"
@@ -577,47 +642,6 @@ tracks/1/keys = {
 "values": [0, 1]
 }
 
-[sub_resource type="Animation" id="Animation_tkwlq"]
-resource_name = "P1_JumpHeavy"
-length = 0.88333505
-step = 0.016666668
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite:animation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [&"p1_jump_5H"]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite:frame")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.050000004, 0.13333334, 0.2),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 1,
-"values": [0, 1, 2, 3]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("State Machine/Jump_Heavy/jH_HitboxArea/jH_hitbox:disabled")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.15, 0.21666667),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 1,
-"values": [true, false, true]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ycdy4"]
 _data = {
 &"Defeat": SubResource("Animation_7hik5"),
@@ -635,7 +659,7 @@ _data = {
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3iwfv"]
-size = Vector2(297, 417)
+size = Vector2(138, 157)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hiqhm"]
 size = Vector2(639.88635, 904.1903)
@@ -677,7 +701,7 @@ libraries = {
 }
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-7.5, 297.5)
+position = Vector2(-32, 427.5)
 shape = SubResource("RectangleShape2D_3iwfv")
 
 [node name="State Machine" type="Node2D" parent="." node_paths=PackedStringArray("starting_state")]
@@ -706,15 +730,16 @@ standheavy_state = NodePath("../Stand_Heavy")
 hitstun_state = NodePath("../Hitstun")
 grounddash_state = NodePath("../GroundDash")
 
-[node name="Jump" type="Node2D" parent="State Machine" node_paths=PackedStringArray("jump_state", "fall_state", "jumplight_state", "jumpheavy_state", "hitstun_state")]
+[node name="Jump" type="Node2D" parent="State Machine" node_paths=PackedStringArray("jump_state", "fall_state", "jumplight_state", "jumpheavy_state", "hitstun_state", "airdash_state")]
 script = ExtResource("17_khis8")
 jump_state = NodePath(".")
 fall_state = NodePath("../Fall")
 jumplight_state = NodePath("../Jump_Light")
 jumpheavy_state = NodePath("../Jump_Heavy")
 hitstun_state = NodePath("../Hitstun")
+airdash_state = NodePath("../AirDash")
 
-[node name="Fall" type="Node2D" parent="State Machine" node_paths=PackedStringArray("idle_state", "walk_state", "jump_state", "fall_state", "standlight_state", "jumplight_state", "jumpheavy_state", "hitstun_state")]
+[node name="Fall" type="Node2D" parent="State Machine" node_paths=PackedStringArray("idle_state", "walk_state", "jump_state", "fall_state", "standlight_state", "jumplight_state", "jumpheavy_state", "hitstun_state", "airdash_state")]
 script = ExtResource("18_b88wv")
 idle_state = NodePath("../Idle")
 walk_state = NodePath("../Walk")
@@ -724,6 +749,7 @@ standlight_state = NodePath("../Stand_Light")
 jumplight_state = NodePath("../Jump_Light")
 jumpheavy_state = NodePath("../Jump_Heavy")
 hitstun_state = NodePath("../Hitstun")
+airdash_state = NodePath("../AirDash")
 
 [node name="Stand_Light" type="Node2D" parent="State Machine" node_paths=PackedStringArray("idle_state", "walk_state", "jump_state", "fall_state", "standlight_state")]
 script = ExtResource("19_pgbbb")
@@ -816,8 +842,12 @@ jump_state = NodePath("../Jump")
 hitstun_state = NodePath("../Hitstun")
 grounddash_state = NodePath(".")
 
-[node name="AirDash" type="Node2D" parent="State Machine"]
+[node name="AirDash" type="Node2D" parent="State Machine" node_paths=PackedStringArray("idle_state", "walk_state", "fall_state", "airdash_state")]
 script = ExtResource("33_hl5qd")
+idle_state = NodePath("../Idle")
+walk_state = NodePath("../Walk")
+fall_state = NodePath("../Fall")
+airdash_state = NodePath(".")
 
 [node name="Defeat" type="Node2D" parent="State Machine"]
 script = ExtResource("25_qtqh7")

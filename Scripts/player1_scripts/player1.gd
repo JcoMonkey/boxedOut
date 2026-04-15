@@ -4,6 +4,7 @@ extends CharacterBody2D
 @onready var state_machine: StateMachine = $"State Machine"
 @onready var animation: AnimationPlayer = $Animation
 @onready var sprite: AnimatedSprite2D = $Sprite
+@onready var hurtbox: Area2D = $PlayerHurtbox
 
 @export var opponent: Player2
 
@@ -12,6 +13,7 @@ signal healthChanged
 var maxHealth: int = 1000
 var currentHealth: int = 1000
 var sprite_flipped: bool = false
+var used_airdash: bool = false
 
 func _ready(): state_machine.init()
 

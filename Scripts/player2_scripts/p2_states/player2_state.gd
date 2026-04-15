@@ -17,6 +17,7 @@ var jumpheavy_anim: String = "P2_JumpHeavy"
 var hitstun_anim: String = "Hitstun"
 var defeat_anim: String = "Defeat"
 var grounddash_anim: String = "P2_GroundDash"
+var airdash_anim: String = "P1_AirDash"
 
 # States (ADD AS EXTERnAL VARIABLES AND LINK IN EDITOR)
 @export_group("States")
@@ -31,6 +32,8 @@ var grounddash_anim: String = "P2_GroundDash"
 @export var hitstun_state: Player2State
 @export var defeat_state: Player2State
 @export var grounddash_state: Player2State
+@export var airdash_state: PlayerState
+
 
 # Input keys MAKE SURE THEY MATCH 
 var movement_key: String = "Movement_p2"
@@ -42,12 +45,13 @@ var light_key: String = "player2_light"
 var heavy_key: String = "player2_heavy"
 var dash_key: String = "player2_dash"
 
-#ts kinda broken
 func process_physics(delta: float) -> State:
 	player.velocity.y += gravity * delta
 	player.move_and_slide()
-	#print("player.is_on_floor() =", player.is_on_floor())
-	if(player.velocity.y >= 0 and not player.is_on_floor()):
+	
+	if player.is_on_floor() == true:
+		player.used_airdash = false
+	elif(player.velocity.y >= 0 ):
 		return fall_state
 	return null
 

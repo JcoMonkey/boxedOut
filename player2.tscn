@@ -1,4 +1,4 @@
-[gd_scene load_steps=55 format=3 uid="uid://cqtqjpnmwkos6"]
+[gd_scene load_steps=56 format=3 uid="uid://cqtqjpnmwkos6"]
 
 [ext_resource type="Script" uid="uid://dpi6r6nhvyo8r" path="res://Scripts/player2_scripts/player2.gd" id="1_66ff5"]
 [ext_resource type="Texture2D" uid="uid://b2kgq58ns8u1b" path="res://assets/player/player2/p2_standheavy/block_bob_heavyground1.png" id="2_0p572"]
@@ -34,6 +34,7 @@
 [ext_resource type="Script" uid="uid://bxp842xvlcohn" path="res://Scripts/player2_scripts/p2_states/p2_movement/p2_grounddash.gd" id="26_o4c0v"]
 [ext_resource type="Script" uid="uid://dlbipkje0k87o" path="res://Scripts/player2_scripts/p2_states/p2_attacks/p2_stand_heavy.gd" id="28_5grbp"]
 [ext_resource type="Script" uid="uid://d1xsf38tubvmx" path="res://Scripts/player2_scripts/p2_states/p2_attacks/p2_jump_heavy.gd" id="30_2ef0q"]
+[ext_resource type="Script" uid="uid://cvnh8r8rdqv2l" path="res://Scripts/player2_scripts/p2_states/p2_movement/p2_air_dash.gd" id="34_2ef0q"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ibah8"]
 animations = [{
@@ -301,6 +302,18 @@ tracks/1/keys = {
 "update": 1,
 "values": [0, 1, 2]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("PlayerHurtbox:monitoring")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.050000004),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
 
 [sub_resource type="Animation" id="Animation_5tmop"]
 resource_name = "JumpLight"
@@ -442,6 +455,18 @@ tracks/5/path = NodePath("State Machine/Jump_Heavy/jH_HitboxArea/jH_hitbox:disab
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("PlayerHurtbox:monitoring")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
@@ -617,7 +642,7 @@ _data = {
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3iwfv"]
-size = Vector2(301, 394)
+size = Vector2(140, 208)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0p572"]
 size = Vector2(616, 860)
@@ -659,7 +684,7 @@ libraries = {
 }
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-34.5, 309)
+position = Vector2(-20, 402)
 shape = SubResource("RectangleShape2D_3iwfv")
 
 [node name="State Machine" type="Node2D" parent="." node_paths=PackedStringArray("starting_state")]
@@ -775,10 +800,11 @@ shape = SubResource("RectangleShape2D_2sjhs")
 disabled = true
 debug_color = Color(0.920751, 0.22778282, 0.42216197, 0.41960785)
 
-[node name="Hitstun" type="Node2D" parent="State Machine" node_paths=PackedStringArray("idle_state", "walk_state", "hitstun_state", "defeat_state")]
+[node name="Hitstun" type="Node2D" parent="State Machine" node_paths=PackedStringArray("idle_state", "walk_state", "jump_state", "hitstun_state", "defeat_state")]
 script = ExtResource("24_66ff5")
 idle_state = NodePath("../Idle")
 walk_state = NodePath("../Walk")
+jump_state = NodePath("../Jump")
 hitstun_state = NodePath(".")
 defeat_state = NodePath("../Defeat")
 
@@ -795,6 +821,12 @@ walk_state = NodePath("../Walk")
 jump_state = NodePath("../Jump")
 hitstun_state = NodePath("../Hitstun")
 grounddash_state = NodePath(".")
+
+[node name="AirDash" type="Node2D" parent="State Machine" node_paths=PackedStringArray("idle_state", "walk_state", "fall_state")]
+script = ExtResource("34_2ef0q")
+idle_state = NodePath("../Idle")
+walk_state = NodePath("../Walk")
+fall_state = NodePath("../Fall")
 
 [node name="PlayerHurtbox" type="Area2D" parent="."]
 collision_layer = 8

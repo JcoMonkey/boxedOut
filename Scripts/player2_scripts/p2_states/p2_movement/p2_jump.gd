@@ -14,7 +14,7 @@ func enter() -> void:
 	
 	
 func exit(new_state: State = null) -> void:
-	#check for ground
+	player.hurtbox.monitoring = true
 	super(new_state)
 	pass
 
@@ -24,6 +24,8 @@ func process_input(event: InputEvent) -> State:
 		return jumplight_state
 	if event.is_action_pressed(heavy_key):
 		return jumpheavy_state
+	if event.is_action_pressed(dash_key) and not player.used_airdash:
+		return airdash_state
 
 	return null
 
