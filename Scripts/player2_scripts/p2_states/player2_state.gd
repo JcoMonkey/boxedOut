@@ -17,7 +17,7 @@ var jumpheavy_anim: String = "P2_JumpHeavy"
 var hitstun_anim: String = "Hitstun"
 var defeat_anim: String = "Defeat"
 var grounddash_anim: String = "P2_GroundDash"
-var airdash_anim: String = "P1_AirDash"
+var airdash_anim: String = "P2_AirDash"
 
 # States (ADD AS EXTERnAL VARIABLES AND LINK IN EDITOR)
 @export_group("States")

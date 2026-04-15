@@ -8,6 +8,7 @@ var dash_direction
 
 func enter() -> void:
 	super()
+	dash_complete = false
 	player.used_airdash = true
 	print("Airdash state")
 	dash_direction = get_move_dir()
@@ -20,7 +21,7 @@ func enter() -> void:
 		else:
 			dash_direction = Vector2(1,0)
 	do_move(dash_direction)
-	player.animation.play(grounddash_anim)
+	player.animation.play(airdash_anim)
 	player.animation.animation_finished.connect(func(_anim): dash_complete = true)
 
 func exit(new_state: State = null) -> void:
