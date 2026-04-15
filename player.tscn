@@ -700,7 +700,7 @@ _data = {
 size = Vector2(138, 157)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hiqhm"]
-size = Vector2(639.88635, 904.1903)
+size = Vector2(771.25024, 889.93774)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qwsg1"]
 size = Vector2(12.242956, 13.722713)
@@ -709,7 +709,7 @@ size = Vector2(12.242956, 13.722713)
 size = Vector2(37.89999, 6.860008)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hl5qd"]
-size = Vector2(1901.5, 363)
+size = Vector2(2215.3562, 328.372)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1xqrm"]
 size = Vector2(771.978, 890.1378)
@@ -804,7 +804,7 @@ script = ExtResource("29_tkwlq")
 damage = 80
 
 [node name="5L_hitbox" type="CollisionShape2D" parent="State Machine/Stand_Light/5L_HitboxArea"]
-position = Vector2(634.94305, -347.15762)
+position = Vector2(714.375, -428)
 scale = Vector2(0.99999964, 0.99999964)
 shape = SubResource("RectangleShape2D_hiqhm")
 disabled = true
@@ -825,7 +825,7 @@ script = ExtResource("29_tkwlq")
 damage = 40
 
 [node name="jL_hitbox" type="CollisionShape2D" parent="State Machine/Jump_Light/jL_HitboxArea"]
-position = Vector2(628.0739, -186)
+position = Vector2(635, -65)
 scale = Vector2(49.999996, 49.999996)
 shape = SubResource("RectangleShape2D_qwsg1")
 disabled = true
@@ -840,7 +840,7 @@ jump_state = NodePath("../Jump")
 
 [node name="5H_HitboxArea" type="Area2D" parent="State Machine/Stand_Heavy"]
 script = ExtResource("29_tkwlq")
-damage = 150
+damage = 170
 
 [node name="5H_hitbox" type="CollisionShape2D" parent="State Machine/Stand_Heavy/5H_HitboxArea"]
 position = Vector2(798.4992, 449.49966)
@@ -849,32 +849,41 @@ shape = SubResource("RectangleShape2D_tkwlq")
 disabled = true
 debug_color = Color(0.99966425, 0, 0.12042982, 0.41960785)
 
-[node name="Jump_Heavy" type="Node2D" parent="State Machine" node_paths=PackedStringArray("idle_state", "walk_state", "fall_state", "hitstun_state")]
+[node name="Jump_Heavy" type="Node2D" parent="State Machine" node_paths=PackedStringArray("idle_state", "walk_state", "jump_state", "fall_state", "hitstun_state")]
 script = ExtResource("30_tkwlq")
 idle_state = NodePath("../Idle")
 walk_state = NodePath("../Walk")
+jump_state = NodePath("../Jump")
 fall_state = NodePath("../Fall")
 hitstun_state = NodePath("../Hitstun")
 
 [node name="jH_HitboxArea" type="Area2D" parent="State Machine/Jump_Heavy"]
+scale = Vector2(0.8385547, 1.4426024)
 collision_mask = 8
 script = ExtResource("29_tkwlq")
 damage = 60
 
 [node name="jH_hitbox" type="CollisionShape2D" parent="State Machine/Jump_Heavy/jH_HitboxArea"]
-position = Vector2(794.75, 446.5)
+position = Vector2(637.822, 429.1862)
+scale = Vector2(1, 1.0000002)
 shape = SubResource("RectangleShape2D_hl5qd")
 disabled = true
 debug_color = Color(0.920751, 0.22778282, 0.42216197, 0.41960785)
 
-[node name="Hitstun" type="Node2D" parent="State Machine" node_paths=PackedStringArray("idle_state", "walk_state", "jump_state", "fall_state", "hitstun_state", "defeat_state")]
+[node name="Hitstun" type="Node2D" parent="State Machine" node_paths=PackedStringArray("idle_state", "walk_state", "jump_state", "fall_state", "standlight_state", "jumplight_state", "standheavy_state", "jumpheavy_state", "hitstun_state", "defeat_state", "grounddash_state", "airdash_state")]
 script = ExtResource("22_7lmhl")
 idle_state = NodePath("../Idle")
 walk_state = NodePath("../Walk")
 jump_state = NodePath("../Jump")
 fall_state = NodePath("../Fall")
+standlight_state = NodePath("../Stand_Light")
+jumplight_state = NodePath("../Jump_Light")
+standheavy_state = NodePath("../Stand_Heavy")
+jumpheavy_state = NodePath("../Jump_Heavy")
 hitstun_state = NodePath(".")
 defeat_state = NodePath("../Defeat")
+grounddash_state = NodePath("../GroundDash")
+airdash_state = NodePath("../AirDash")
 
 [node name="GroundDash" type="Node2D" parent="State Machine" node_paths=PackedStringArray("idle_state", "walk_state", "jump_state", "hitstun_state", "grounddash_state")]
 script = ExtResource("25_2wuci")

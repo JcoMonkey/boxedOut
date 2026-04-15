@@ -37,10 +37,12 @@ func process_frame(delta: float) -> State:
 			return defeat_state
 		elif(not player.is_on_floor()):
 			return fall_state
+			#add attacks and airdash to this later
 		if get_move_dir().y == -1.0:
 			return jump_state
 		elif get_move_dir().x != 0.0:
 			return walk_state
+		#add attacks and ground dash to this later
 		else: 
 			return idle_state
 	return null

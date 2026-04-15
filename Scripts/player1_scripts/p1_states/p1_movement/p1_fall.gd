@@ -27,13 +27,11 @@ func process_physics(delta: float) -> State:
 	if(player.is_on_floor()):
 		player.velocity.x = 0
 		if(get_move_dir().y == -1):
-			return jump_state
-		elif get_move_dir().x != 0.0:
-			return walk_state
-		elif(get_move_dir().y == -1):
 			# player never technically "lands" so explicitly returns airdash use
 			player.used_airdash = false
 			return jump_state
+		elif get_move_dir().x != 0.0:
+			return walk_state
 		else: 
 			return idle_state
 	player.velocity.y += gravity * delta

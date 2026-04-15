@@ -645,7 +645,7 @@ _data = {
 size = Vector2(140, 208)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0p572"]
-size = Vector2(616, 860)
+size = Vector2(770, 860)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qwsg1"]
 size = Vector2(11.6, 13.508776)
@@ -654,7 +654,7 @@ size = Vector2(11.6, 13.508776)
 size = Vector2(37.899998, 7.8)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2sjhs"]
-size = Vector2(1901.5, 363)
+size = Vector2(1901.5, 661.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1xqrm"]
 size = Vector2(771.978, 890.1378)
@@ -744,7 +744,7 @@ script = ExtResource("23_5grbp")
 damage = 80
 
 [node name="5L_hitbox" type="CollisionShape2D" parent="State Machine/Stand_Light/5L_HitboxArea"]
-position = Vector2(618, -342)
+position = Vector2(695, -342)
 shape = SubResource("RectangleShape2D_0p572")
 disabled = true
 debug_color = Color(0.920751, 0.22778282, 0.42216197, 0.41960785)
@@ -776,7 +776,7 @@ standheavy_state = NodePath(".")
 
 [node name="5H_HitboxArea" type="Area2D" parent="State Machine/Stand_Heavy"]
 script = ExtResource("23_5grbp")
-damage = 150
+damage = 170
 
 [node name="5H_hitbox" type="CollisionShape2D" parent="State Machine/Stand_Heavy/5H_HitboxArea"]
 position = Vector2(813.5, 481)
@@ -797,7 +797,7 @@ script = ExtResource("23_5grbp")
 damage = 60
 
 [node name="jH_hitbox" type="CollisionShape2D" parent="State Machine/Jump_Heavy/jH_HitboxArea"]
-position = Vector2(829, 494)
+position = Vector2(544, 491)
 shape = SubResource("RectangleShape2D_2sjhs")
 disabled = true
 debug_color = Color(0.920751, 0.22778282, 0.42216197, 0.41960785)

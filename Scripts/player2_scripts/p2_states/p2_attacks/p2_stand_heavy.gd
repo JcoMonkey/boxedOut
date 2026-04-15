@@ -32,9 +32,9 @@ func process_physics(delta: float) -> State:
 
 	if hitbox.disabled == false:
 		if player.sprite_flipped == false:
-			player.velocity.x = 1500
+			player.velocity.x = 1750
 		else:
-			player.velocity.x = -1500
+			player.velocity.x = -1750
 	
 	super.process_physics(delta)
 	return null
