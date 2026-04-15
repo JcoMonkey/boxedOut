@@ -1,7 +1,7 @@
 class_name Player1AirDashState
 extends PlayerState
 
-const AIRDASH_SPEED: float = 777
+const AIRDASH_SPEED: float = 666
 
 var dash_complete
 var dash_direction
@@ -53,7 +53,11 @@ func process_frame(delta: float) -> State:
 		print("airdash complete")
 		if not player.is_on_floor():
 			return fall_state
-		elif(dash_direction.x != 0):
+		elif(get_move_dir().y == -1):
+			# player never technically "lands" so explicitly returns airdash use
+			player.used_airdash = false
+			return jump_state
+		elif(get_move_dir().x != 0):
 			return walk_state
 		return idle_state
 	return null

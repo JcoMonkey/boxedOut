@@ -1,3 +1,35 @@
-[gd_scene format=3 uid="uid://d4hhcawx4w50s"]
+[gd_scene load_steps=5 format=3 uid="uid://d4hhcawx4w50s"]
 
-[node name="Mainmenu" type="Node2D"]
+[ext_resource type="Script" uid="uid://ceg2yx45opqll" path="res://Scripts/mainmenu.gd" id="1_d2nv2"]
+[ext_resource type="Texture2D" uid="uid://b21c0k1uwyuxn" path="res://assets/logo.png" id="2_wgsso"]
+[ext_resource type="Script" uid="uid://biox5y2c348cu" path="res://Scripts/start_button.gd" id="3_wgsso"]
+[ext_resource type="PackedScene" uid="uid://c033oja3lxwkr" path="res://main.tscn" id="4_igs2m"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_d2nv2")
+
+[node name="Main" parent="." instance=ExtResource("4_igs2m")]
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 51.99997
+offset_top = 32.999985
+offset_right = 91.99997
+offset_bottom = 84.999985
+scale = Vector2(29.363548, 12.716841)
+
+[node name="StartButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+script = ExtResource("3_wgsso")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="VBoxContainer"]
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer"]
+layout_mode = 2
+texture = ExtResource("2_wgsso")
+expand_mode = 4

@@ -1,7 +1,7 @@
 class_name Player2AirDashState
 extends Player2State
 
-const AIRDASH_SPEED: float = 777
+const AIRDASH_SPEED: float = 666
 
 var dash_complete
 var dash_direction

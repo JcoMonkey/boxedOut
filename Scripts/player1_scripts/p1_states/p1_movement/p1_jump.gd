@@ -30,10 +30,7 @@ func process_input(event: InputEvent) -> State:
 	return null
 
 func process_physics(delta: float) -> State:
-	#print("player velocity y= ",player.velocity.y)
-	#print("jumpstate physics ran")
-	#change later to be fixed jump arc, maintain velocity from initial jump
-	#do_move(get_move_dir())
+	player.update_facing()
 	return super(delta)
 
 func get_move_dir() -> float:

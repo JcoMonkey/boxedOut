@@ -31,15 +31,18 @@ func process_physics(delta: float) -> State:
 	player.update_facing()
 	print("move_dir = ", get_move_dir())
 	super.process_physics(delta)
-	if get_move_dir() == 0.0: 
+	if get_move_dir().x == 0.0: 
 		return idle_state
-	do_move(get_move_dir())
+	do_move(get_move_dir().x)
 
 	return null
 	
-func get_move_dir() -> float:
-	# print("Input axis = ", Input.get_axis(left_key, right_key))
-	return Input.get_axis(left_key, right_key)
+func get_move_dir() -> Vector2:
+	var x_dir = Input.get_axis(left_key, right_key)
+	#print("Input axis x = ", Input.get_axis(left_key, right_key))
+	var y_dir = Input.get_axis(jump_key, down_key)
+	#print("Input axis y = ", Input.get_axis(left_key, right_key))
+	return Vector2(x_dir, y_dir)
 
 func do_move(move_dir: float) -> void:
 	player.velocity.x = move_dir * SPEED
