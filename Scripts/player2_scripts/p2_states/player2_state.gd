@@ -32,8 +32,7 @@ var airdash_anim: String = "P1_AirDash"
 @export var hitstun_state: Player2State
 @export var defeat_state: Player2State
 @export var grounddash_state: Player2State
-@export var airdash_state: PlayerState
-
+@export var airdash_state: Player2State
 
 # Input keys MAKE SURE THEY MATCH 
 var movement_key: String = "Movement_p2"

@@ -53,6 +53,10 @@ func process_frame(delta: float) -> State:
 		print("airdash complete")
 		if not player.is_on_floor():
 			return fall_state
+		elif(get_move_dir().y == -1):
+			# player never technically "lands" so explicitly returns airdash use
+			player.used_airdash = false
+			return jump_state
 		elif(dash_direction.x != 0):
 			return walk_state
 		return idle_state

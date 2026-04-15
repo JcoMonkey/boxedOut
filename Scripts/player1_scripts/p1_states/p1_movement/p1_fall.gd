@@ -1,7 +1,7 @@
 class_name PlayerFallState
 extends PlayerState
 
-const AIR_SPEED: float = 330
+const AIR_SPEED: float = 260
 
 func enter() -> void:
 	super()
@@ -44,6 +44,3 @@ func get_move_dir() -> Vector2:
 	var y_dir = Input.get_axis(jump_key, down_key)
 	#print("Input axis y = ", Input.get_axis(left_key, right_key))
 	return Vector2(x_dir, y_dir)
-
-#func do_move(move_dir: float) -> void:
-	#player.velocity.x = move_dir * AIR_SPEED

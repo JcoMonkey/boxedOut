@@ -43,12 +43,17 @@ func process_frame(delta: float) -> State:
 	super(delta)
 	if attack_complete: 
 		print("attack complete")
-		if get_move_dir() != 0.0:
+		if(get_move_dir().y == -1):
+			return jump_state
+		if get_move_dir().x != 0.0:
 			return walk_state
 		else: 
 			return idle_state
 	return null
 
-func get_move_dir() -> float:
-	print("Input axis = ", Input.get_axis(left_key, right_key))
-	return Input.get_axis(left_key, right_key)
+func get_move_dir() -> Vector2:
+	var x_dir = Input.get_axis(left_key, right_key)
+	#print("Input axis x = ", Input.get_axis(left_key, right_key))
+	var y_dir = Input.get_axis(jump_key, down_key)
+	#print("Input axis y = ", Input.get_axis(left_key, right_key))
+	return Vector2(x_dir, y_dir)

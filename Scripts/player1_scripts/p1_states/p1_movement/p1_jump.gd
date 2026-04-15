@@ -1,12 +1,13 @@
 class_name PlayerJumpState
 extends PlayerState
 
-const AIR_SPEED: float = 330
+const AIR_SPEED: float = 260
 const JUMP_FORCE: float = -600
 
 func enter() -> void:
 	super()
 	print("Jump state")
+	player.update_facing()
 	player.animation.play(jump_anim)
 	#wait
 	player.velocity.y =JUMP_FORCE
@@ -30,7 +31,6 @@ func process_input(event: InputEvent) -> State:
 	return null
 
 func process_physics(delta: float) -> State:
-	player.update_facing()
 	return super(delta)
 
 func get_move_dir() -> float:

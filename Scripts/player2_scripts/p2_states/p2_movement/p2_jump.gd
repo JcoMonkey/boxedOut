@@ -1,18 +1,19 @@
 class_name Player2JumpState
 extends Player2State
 
-const AIR_SPEED: float = 330
+const AIR_SPEED: float = 260
 const JUMP_FORCE: float = -600
 
 func enter() -> void:
 	super()
 	print("p2 Jump state")
+	player.update_facing()
 	player.animation.play(jump_anim)
 	#wait
 	player.velocity.y =JUMP_FORCE
 	do_move(get_move_dir())
-	
-	
+
+
 func exit(new_state: State = null) -> void:
 	player.hurtbox.monitoring = true
 	super(new_state)
@@ -30,10 +31,7 @@ func process_input(event: InputEvent) -> State:
 	return null
 
 func process_physics(delta: float) -> State:
-	#print("player velocity y= ",player.velocity.y)
-	#print("jumpstate physics ran")
-	#change later to be fixed jump arc, maintain velocity from initial jump
-	#do_move(get_move_dir())
+	player.update_facing()
 	return super(delta)
 
 func get_move_dir() -> float:

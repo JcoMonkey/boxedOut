@@ -703,13 +703,13 @@ size = Vector2(138, 157)
 size = Vector2(771.25024, 889.93774)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qwsg1"]
-size = Vector2(12.242956, 13.722713)
+size = Vector2(10.7, 12.940001)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tkwlq"]
-size = Vector2(37.89999, 6.860008)
+size = Vector2(35.579987, 6.860008)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hl5qd"]
-size = Vector2(2215.3562, 328.372)
+size = Vector2(1994.7384, 440.66876)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1xqrm"]
 size = Vector2(771.978, 890.1378)
@@ -825,7 +825,7 @@ script = ExtResource("29_tkwlq")
 damage = 40
 
 [node name="jL_hitbox" type="CollisionShape2D" parent="State Machine/Jump_Light/jL_HitboxArea"]
-position = Vector2(635, -65)
+position = Vector2(621.5, -197.5)
 scale = Vector2(49.999996, 49.999996)
 shape = SubResource("RectangleShape2D_qwsg1")
 disabled = true
@@ -843,8 +843,8 @@ script = ExtResource("29_tkwlq")
 damage = 170
 
 [node name="5H_hitbox" type="CollisionShape2D" parent="State Machine/Stand_Heavy/5H_HitboxArea"]
-position = Vector2(798.4992, 449.49966)
-scale = Vector2(49.999973, 49.999973)
+position = Vector2(856.49915, 449.4996)
+scale = Vector2(49.99997, 49.99997)
 shape = SubResource("RectangleShape2D_tkwlq")
 disabled = true
 debug_color = Color(0.99966425, 0, 0.12042982, 0.41960785)
@@ -864,8 +864,8 @@ script = ExtResource("29_tkwlq")
 damage = 60
 
 [node name="jH_hitbox" type="CollisionShape2D" parent="State Machine/Jump_Heavy/jH_HitboxArea"]
-position = Vector2(637.822, 429.1862)
-scale = Vector2(1, 1.0000002)
+position = Vector2(748.1311, 308.57086)
+scale = Vector2(1, 1.0000005)
 shape = SubResource("RectangleShape2D_hl5qd")
 disabled = true
 debug_color = Color(0.920751, 0.22778282, 0.42216197, 0.41960785)
@@ -893,12 +893,14 @@ jump_state = NodePath("../Jump")
 hitstun_state = NodePath("../Hitstun")
 grounddash_state = NodePath(".")
 
-[node name="AirDash" type="Node2D" parent="State Machine" node_paths=PackedStringArray("idle_state", "walk_state", "jump_state", "fall_state", "airdash_state")]
+[node name="AirDash" type="Node2D" parent="State Machine" node_paths=PackedStringArray("idle_state", "walk_state", "jump_state", "fall_state", "jumplight_state", "jumpheavy_state", "airdash_state")]
 script = ExtResource("33_hl5qd")
 idle_state = NodePath("../Idle")
 walk_state = NodePath("../Walk")
 jump_state = NodePath("../Jump")
 fall_state = NodePath("../Fall")
+jumplight_state = NodePath("../Jump_Light")
+jumpheavy_state = NodePath("../Jump_Heavy")
 airdash_state = NodePath(".")
 
 [node name="Defeat" type="Node2D" parent="State Machine"]

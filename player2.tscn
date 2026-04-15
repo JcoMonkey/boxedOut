@@ -645,16 +645,16 @@ _data = {
 size = Vector2(140, 208)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0p572"]
-size = Vector2(770, 860)
+size = Vector2(770, 948)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qwsg1"]
 size = Vector2(11.6, 13.508776)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_27lsu"]
-size = Vector2(37.899998, 7.8)
+size = Vector2(35.3, 7.8)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2sjhs"]
-size = Vector2(1901.5, 661.5)
+size = Vector2(1719.75, 661.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1xqrm"]
 size = Vector2(771.978, 890.1378)
@@ -713,21 +713,24 @@ standheavy_state = NodePath("../Stand_Heavy")
 hitstun_state = NodePath("../Hitstun")
 grounddash_state = NodePath("../GroundDash")
 
-[node name="Jump" type="Node2D" parent="State Machine" node_paths=PackedStringArray("jump_state", "fall_state", "jumplight_state", "jumpheavy_state", "hitstun_state")]
+[node name="Jump" type="Node2D" parent="State Machine" node_paths=PackedStringArray("jump_state", "fall_state", "jumplight_state", "jumpheavy_state", "hitstun_state", "airdash_state")]
 script = ExtResource("19_66ff5")
 jump_state = NodePath(".")
 fall_state = NodePath("../Fall")
 jumplight_state = NodePath("../Jump_Light")
 jumpheavy_state = NodePath("../Jump_Heavy")
 hitstun_state = NodePath("../Hitstun")
+airdash_state = NodePath("../AirDash")
 
-[node name="Fall" type="Node2D" parent="State Machine" node_paths=PackedStringArray("idle_state", "walk_state", "jumplight_state", "jumpheavy_state", "hitstun_state")]
+[node name="Fall" type="Node2D" parent="State Machine" node_paths=PackedStringArray("idle_state", "walk_state", "jump_state", "jumplight_state", "jumpheavy_state", "hitstun_state", "airdash_state")]
 script = ExtResource("20_66ff5")
 idle_state = NodePath("../Idle")
 walk_state = NodePath("../Walk")
+jump_state = NodePath("../Jump")
 jumplight_state = NodePath("../Jump_Light")
 jumpheavy_state = NodePath("../Jump_Heavy")
 hitstun_state = NodePath("../Hitstun")
+airdash_state = NodePath("../AirDash")
 
 [node name="Stand_Light" type="Node2D" parent="State Machine" node_paths=PackedStringArray("idle_state", "walk_state", "jump_state", "standlight_state", "standheavy_state", "jumpheavy_state", "hitstun_state")]
 script = ExtResource("21_o4c0v")
@@ -744,15 +747,16 @@ script = ExtResource("23_5grbp")
 damage = 80
 
 [node name="5L_hitbox" type="CollisionShape2D" parent="State Machine/Stand_Light/5L_HitboxArea"]
-position = Vector2(695, -342)
+position = Vector2(695, -386)
 shape = SubResource("RectangleShape2D_0p572")
 disabled = true
 debug_color = Color(0.920751, 0.22778282, 0.42216197, 0.41960785)
 
-[node name="Jump_Light" type="Node2D" parent="State Machine" node_paths=PackedStringArray("idle_state", "walk_state", "fall_state", "standheavy_state", "hitstun_state")]
+[node name="Jump_Light" type="Node2D" parent="State Machine" node_paths=PackedStringArray("idle_state", "walk_state", "jump_state", "fall_state", "standheavy_state", "hitstun_state")]
 script = ExtResource("23_1j1yk")
 idle_state = NodePath("../Idle")
 walk_state = NodePath("../Walk")
+jump_state = NodePath("../Jump")
 fall_state = NodePath("../Fall")
 standheavy_state = NodePath("../Jump_Heavy")
 hitstun_state = NodePath("../Hitstun")
@@ -768,10 +772,11 @@ shape = SubResource("RectangleShape2D_qwsg1")
 disabled = true
 debug_color = Color(0.94002944, 0.21631983, 0.30903247, 0.41960785)
 
-[node name="Stand_Heavy" type="Node2D" parent="State Machine" node_paths=PackedStringArray("idle_state", "walk_state", "standheavy_state")]
+[node name="Stand_Heavy" type="Node2D" parent="State Machine" node_paths=PackedStringArray("idle_state", "walk_state", "jump_state", "standheavy_state")]
 script = ExtResource("28_5grbp")
 idle_state = NodePath("../Idle")
 walk_state = NodePath("../Walk")
+jump_state = NodePath("../Jump")
 standheavy_state = NodePath(".")
 
 [node name="5H_HitboxArea" type="Area2D" parent="State Machine/Stand_Heavy"]
@@ -779,16 +784,17 @@ script = ExtResource("23_5grbp")
 damage = 170
 
 [node name="5H_hitbox" type="CollisionShape2D" parent="State Machine/Stand_Heavy/5H_HitboxArea"]
-position = Vector2(813.5, 481)
+position = Vector2(878.49994, 481)
 scale = Vector2(50, 50)
 shape = SubResource("RectangleShape2D_27lsu")
 disabled = true
 debug_color = Color(0.99966425, 0, 0.12042982, 0.41960785)
 
-[node name="Jump_Heavy" type="Node2D" parent="State Machine" node_paths=PackedStringArray("idle_state", "walk_state", "fall_state")]
+[node name="Jump_Heavy" type="Node2D" parent="State Machine" node_paths=PackedStringArray("idle_state", "walk_state", "jump_state", "fall_state")]
 script = ExtResource("30_2ef0q")
 idle_state = NodePath("../Idle")
 walk_state = NodePath("../Walk")
+jump_state = NodePath("../Jump")
 fall_state = NodePath("../Fall")
 
 [node name="jH_HitboxArea" type="Area2D" parent="State Machine/Jump_Heavy"]
@@ -797,7 +803,7 @@ script = ExtResource("23_5grbp")
 damage = 60
 
 [node name="jH_hitbox" type="CollisionShape2D" parent="State Machine/Jump_Heavy/jH_HitboxArea"]
-position = Vector2(544, 491)
+position = Vector2(634.875, 491)
 shape = SubResource("RectangleShape2D_2sjhs")
 disabled = true
 debug_color = Color(0.920751, 0.22778282, 0.42216197, 0.41960785)
@@ -809,8 +815,6 @@ walk_state = NodePath("../Walk")
 jump_state = NodePath("../Jump")
 hitstun_state = NodePath(".")
 defeat_state = NodePath("../Defeat")
-
-[node name="Block" type="Node2D" parent="State Machine"]
 
 [node name="Defeat" type="Node2D" parent="State Machine" node_paths=PackedStringArray("defeat_state")]
 script = ExtResource("25_66ff5")
@@ -824,10 +828,11 @@ jump_state = NodePath("../Jump")
 hitstun_state = NodePath("../Hitstun")
 grounddash_state = NodePath(".")
 
-[node name="AirDash" type="Node2D" parent="State Machine" node_paths=PackedStringArray("idle_state", "walk_state", "fall_state")]
+[node name="AirDash" type="Node2D" parent="State Machine" node_paths=PackedStringArray("idle_state", "walk_state", "jump_state", "fall_state")]
 script = ExtResource("34_2ef0q")
 idle_state = NodePath("../Idle")
 walk_state = NodePath("../Walk")
+jump_state = NodePath("../Jump")
 fall_state = NodePath("../Fall")
 
 [node name="PlayerHurtbox" type="Area2D" parent="."]
