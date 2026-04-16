@@ -3,6 +3,7 @@ extends PlayerState
 
 func enter() -> void:
 	print("Defeat state")
+	get_node("../../..").player_defeated()
 	player.animation.play(defeat_anim)
 	
 func exit(new_state: State = null) -> void:

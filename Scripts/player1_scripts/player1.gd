@@ -14,6 +14,7 @@ var maxHealth: int = 1000
 var currentHealth: int = 1000
 var sprite_flipped: bool = false
 var used_airdash: bool = false
+var is_koed: bool = false
 
 func _ready(): state_machine.init()
 

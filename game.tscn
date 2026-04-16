@@ -1,15 +1,19 @@
-[gd_scene load_steps=19 format=4 uid="uid://c033oja3lxwkr"]
+[gd_scene load_steps=24 format=4 uid="uid://c033oja3lxwkr"]
 
 [ext_resource type="Script" uid="uid://dodhuqfr8s0tv" path="res://Scripts/main.gd" id="1_hve3p"]
 [ext_resource type="Texture2D" uid="uid://criaeocvwxfs2" path="res://assets/boxingring.png" id="2_mfdv2"]
+[ext_resource type="AudioStream" uid="uid://dwdnh24s023gd" path="res://assets/audio/p1win_sfx.mp3" id="3_215e1"]
 [ext_resource type="Texture2D" uid="uid://bol3cy0t8qxdw" path="res://assets/tileset.png" id="3_iotsf"]
+[ext_resource type="AudioStream" uid="uid://ddunctpr3ikok" path="res://assets/audio/p2_win.mp3" id="4_7sc4i"]
 [ext_resource type="Texture2D" uid="uid://dw7t4f4qqub5u" path="res://assets/tilemap.png" id="4_lc2xo"]
 [ext_resource type="PackedScene" uid="uid://2bblk5htisam" path="res://player.tscn" id="5_215e1"]
 [ext_resource type="PackedScene" uid="uid://cqtqjpnmwkos6" path="res://player2.tscn" id="6_7sc4i"]
 [ext_resource type="Script" uid="uid://ssm4uy56jx6f" path="res://Scripts/camera_2d.gd" id="7_80cx4"]
-[ext_resource type="Script" uid="uid://601nok4jxcqd" path="res://Scripts/player1_scripts/healthbar.gd" id="8_e8heu"]
+[ext_resource type="Script" uid="uid://601nok4jxcqd" path="res://Scripts/player1_scripts/p1_healthbar.gd" id="8_e8heu"]
 [ext_resource type="Script" uid="uid://dpehiefobiads" path="res://Scripts/player2_scripts/p2_healthbar.gd" id="9_rvswv"]
 [ext_resource type="PackedScene" uid="uid://bube7jfn62cug" path="res://pause_menu.tscn" id="10_boyg6"]
+[ext_resource type="AudioStream" uid="uid://tm67tx8476kl" path="res://assets/audio/ko_sfx.mp3" id="11_mfdv2"]
+[ext_resource type="Texture2D" uid="uid://oxsymop8mqr" path="res://assets/ko_effect.png" id="12_iotsf"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_272bh"]
 texture = ExtResource("3_iotsf")
@@ -4624,8 +4628,30 @@ size = Vector2(4803, 590)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2cqfq"]
 size = Vector2(573.975, 2414.331)
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_lc2xo"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("12_iotsf")
+}],
+"loop": true,
+"name": &"ko",
+"speed": 5.0
+}]
+
 [node name="Main" type="Node2D"]
 script = ExtResource("1_hve3p")
+
+[node name="Audio" type="Node" parent="."]
+
+[node name="Ko_sfx" type="AudioStreamPlayer2D" parent="Audio"]
+stream = ExtResource("11_mfdv2")
+
+[node name="P1win_sfx" type="AudioStreamPlayer" parent="Audio"]
+stream = ExtResource("3_215e1")
+
+[node name="P2win_sfx" type="AudioStreamPlayer" parent="Audio"]
+stream = ExtResource("4_7sc4i")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(641.4613, 358.9003)
@@ -4684,7 +4710,18 @@ script = ExtResource("7_80cx4")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="P1_healthbar" type="ProgressBar" parent="CanvasLayer"]
+[node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("10_boyg6")]
+visible = false
+
+[node name="GameUI" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1280.0
+offset_bottom = 722.0
+
+[node name="P1_healthbar" type="ProgressBar" parent="CanvasLayer/GameUI"]
+custom_minimum_size = Vector2(550, 90)
+layout_mode = 0
 offset_left = 70.0
 offset_top = 30.0
 offset_right = 620.0
@@ -4695,19 +4732,34 @@ value = 100.0
 fill_mode = 1
 script = ExtResource("8_e8heu")
 
-[node name="P2_healthbar" type="ProgressBar" parent="CanvasLayer"]
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -628.0
+[node name="P2_healthbar" type="ProgressBar" parent="CanvasLayer/GameUI"]
+custom_minimum_size = Vector2(550, 90)
+layout_mode = 1
+offset_left = 660.0
 offset_top = 30.0
-offset_right = -78.0
+offset_right = 1210.0
 offset_bottom = 120.0
-grow_horizontal = 0
 theme_override_colors/font_color = Color(0, 0.5619496, 0.94904333, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 value = 100.0
 script = ExtResource("9_rvswv")
 
-[node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("10_boyg6")]
+[node name="Restart_text" type="RichTextLabel" parent="CanvasLayer/GameUI"]
 visible = false
+layout_mode = 0
+offset_left = 242.0
+offset_top = 196.0
+offset_right = 1094.0
+offset_bottom = 606.0
+theme_override_font_sizes/normal_font_size = 150
+theme_override_font_sizes/bold_italics_font_size = 400
+text = "Restarting soon..."
+fit_content = true
+tab_size = 7
+
+[node name="Ko_effect" type="AnimatedSprite2D" parent="CanvasLayer"]
+visible = false
+position = Vector2(622.99994, 355.00003)
+scale = Vector2(0.44127604, 0.5078704)
+sprite_frames = SubResource("SpriteFrames_lc2xo")
+animation = &"ko"

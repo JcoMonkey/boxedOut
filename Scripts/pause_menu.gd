@@ -13,6 +13,11 @@ func callPauseMenu():
 	elif Input.is_action_just_pressed("ui_cancel") and get_tree().paused == true:
 		visible = false
 		resume()
+		
+func quickRestart():
+	if Input.is_action_just_pressed("restart") and get_tree().paused == true:
+		resume()
+		get_tree().reload_current_scene()
 
 func _on_resume_pressed() -> void:
 	resume()
@@ -21,9 +26,9 @@ func _on_restart_pressed() -> void:
 	resume()
 	get_tree().reload_current_scene()
 
-
 func _on_quit_pressed() -> void:
 	get_tree().quit()
 	
 func _process(delta):
 	callPauseMenu()
+	quickRestart()

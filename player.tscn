@@ -19,13 +19,13 @@
 [ext_resource type="Texture2D" uid="uid://dd067hbnwky8f" path="res://assets/player/player1/player1_jump/squaresam_jump2_big.png" id="10_j5n4i"]
 [ext_resource type="Texture2D" uid="uid://dx22pmccbtwtk" path="res://assets/player/player1/player1_walk/squaresam_walk1_big.png" id="11_634y6"]
 [ext_resource type="Texture2D" uid="uid://cty4clso2nkti" path="res://assets/player/player1/player1_walk/squaresam_walk2_big.png" id="12_efrwb"]
-[ext_resource type="AudioStream" uid="uid://bvfsgbt1lkjep" path="res://assets/scream.mp3" id="13_hiqhm"]
 [ext_resource type="Script" uid="uid://dkrtexlliu4k8" path="res://Scripts/state_machine.gd" id="14_tkwlq"]
 [ext_resource type="Script" uid="uid://jjujkgsq8pwa" path="res://Scripts/player1_scripts/p1_states/p1_misc/p1_idle.gd" id="15_hl5qd"]
 [ext_resource type="Script" uid="uid://bnksdj8lo2cx4" path="res://Scripts/player1_scripts/p1_states/p1_movement/p1_walk.gd" id="16_ek41f"]
 [ext_resource type="Script" uid="uid://cbxyrqti3xqy2" path="res://Scripts/player1_scripts/p1_states/p1_movement/p1_jump.gd" id="17_khis8"]
 [ext_resource type="Script" uid="uid://ttcdv06j5bv3" path="res://Scripts/player1_scripts/p1_states/p1_movement/p1_fall.gd" id="18_b88wv"]
 [ext_resource type="Script" uid="uid://bfnmvu6c0nl86" path="res://Scripts/player1_scripts/p1_states/p1_attacks/p1_stand_light.gd" id="19_pgbbb"]
+[ext_resource type="AudioStream" uid="uid://krppkgg01nwo" path="res://assets/audio/roundstart.mp3" id="20_hl5qd"]
 [ext_resource type="Script" uid="uid://cbbc8gp2dp7kf" path="res://Scripts/player1_scripts/p1_states/p1_attacks/p1_jump_light.gd" id="21_ny14h"]
 [ext_resource type="Script" uid="uid://lkumo0wkjj54" path="res://Scripts/player1_scripts/player1_hurtbox.gd" id="22_7ahtn"]
 [ext_resource type="Script" uid="uid://cfks5uawgsarl" path="res://Scripts/player1_scripts/p1_states/p1_misc/p1_hitstun.gd" id="22_7lmhl"]
@@ -730,7 +730,7 @@ offset = Vector2(-1300, -1300)
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 position = Vector2(3028.7192, -450.21503)
 scale = Vector2(13.6428795, 13.6428795)
-stream = ExtResource("13_hiqhm")
+stream = ExtResource("20_hl5qd")
 autoplay = true
 
 [node name="Animation" type="AnimationPlayer" parent="."]

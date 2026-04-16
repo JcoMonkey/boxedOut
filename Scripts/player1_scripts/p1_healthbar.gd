@@ -1,6 +1,6 @@
 extends ProgressBar
 
-@onready var player : Player1 = get_node("../../Player1")
+@onready var player : Player1 = get_node("../../../Player1")
 
 func _ready():
 	player.healthChanged.connect(update)
