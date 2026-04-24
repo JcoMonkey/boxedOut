@@ -9,6 +9,8 @@ func enter() -> void:
 	print("p2 Jump state")
 	player.update_facing()
 	player.animation.play(jump_anim)
+	#not stopped by opponent while jumping
+	#player.set_collision_mask_value(2, false)
 	#wait
 	player.velocity.y =JUMP_FORCE
 	do_move(get_move_dir())

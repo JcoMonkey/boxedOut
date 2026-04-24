@@ -9,6 +9,7 @@ func enter() -> void:
 	print("Jump state")
 	player.update_facing()
 	player.animation.play(jump_anim)
+	#player.set_collision_mask_value(4, false) # p2 layer is false, allows passing through on a jump
 	#wait
 	player.velocity.y =JUMP_FORCE
 	do_move(get_move_dir())

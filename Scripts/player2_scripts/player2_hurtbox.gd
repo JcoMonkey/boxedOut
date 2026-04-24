@@ -13,6 +13,7 @@ func _ready():
 
 func on_area_entered(hitbox: Hitbox) -> void:
 	player.take_damage(hitbox.damage)
+	player.stun = hitbox.hitstun
 	print("Player 2 health = ",player.currentHealth)
 	print("Damage dealt player")
 	if hitbox == null: return

@@ -50,6 +50,7 @@ func process_physics(delta: float) -> State:
 	
 	if player.is_on_floor() == true:
 		player.used_airdash = false
+		player.set_collision_mask_value(2, true)
 	elif(player.velocity.y >= 0 ):
 		return fall_state
 	return null

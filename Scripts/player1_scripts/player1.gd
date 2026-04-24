@@ -15,6 +15,9 @@ var currentHealth: int = 1000
 var sprite_flipped: bool = false
 var used_airdash: bool = false
 var is_koed: bool = false
+var stun: int = 0
+var maxMeter: int = 3000
+var currentMeter = 0
 
 func _ready(): state_machine.init()
 
@@ -27,6 +30,8 @@ func _input(event): state_machine.process_input(event)
 func take_damage(damage: int) -> void:
 	currentHealth  = currentHealth - damage
 	healthChanged.emit()
+	if currentHealth <= 0:
+		is_koed = true
 
 func update_facing() -> void:
 	sprite_flipped = global_position.x > opponent.global_position.x

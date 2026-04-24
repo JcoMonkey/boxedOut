@@ -48,7 +48,11 @@ func process_physics(delta: float) -> State:
 	player.velocity.y += gravity * delta
 	player.move_and_slide()
 	
+	#if(collidesWithOtherCharacter && Position.y < other.Position.y + characterHeight):
+	#	ApplyImpulse(new Vector2D(Position.x - other.Position.x, 0)Normalized * Pushforce)
+	
 	if player.is_on_floor() == true:
+		player.set_collision_mask_value(4, true)
 		player.used_airdash = false
 	elif(player.velocity.y >= 0 ):
 		return fall_state

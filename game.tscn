@@ -4654,8 +4654,8 @@ stream = ExtResource("3_215e1")
 stream = ExtResource("4_7sc4i")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(641.4613, 358.9003)
-scale = Vector2(0.30529395, 0.30707264)
+position = Vector2(619.99994, 277)
+scale = Vector2(0.55078864, 0.42617533)
 texture = ExtResource("2_mfdv2")
 
 [node name="TileMapLayerBackground" type="TileMapLayer" parent="."]
@@ -4695,11 +4695,11 @@ position = Vector2(-64.5, 444.1623)
 shape = SubResource("RectangleShape2D_7mycd")
 
 [node name="Left Wall" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(-1626.6432, -946.57764)
+position = Vector2(-2727.7876, -989.60516)
 shape = SubResource("RectangleShape2D_2cqfq")
 
 [node name="Right Wall" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(1589.8828, -952.70435)
+position = Vector2(2604.9558, -975.6997)
 shape = SubResource("RectangleShape2D_2cqfq")
 
 [node name="Camera2D" type="Camera2D" parent="." groups=["Camera"]]

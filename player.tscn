@@ -241,7 +241,7 @@ tracks/1/keys = {
 
 [sub_resource type="Animation" id="Animation_jm5j8"]
 resource_name = "Hitstun"
-length = 0.26666835
+length = 0.016668335
 step = 0.016666668
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -697,7 +697,7 @@ _data = {
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3iwfv"]
-size = Vector2(138, 157)
+size = Vector2(594, 869)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hiqhm"]
 size = Vector2(771.25024, 889.93774)
@@ -712,7 +712,7 @@ size = Vector2(35.579987, 6.860008)
 size = Vector2(1994.7384, 440.66876)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1xqrm"]
-size = Vector2(771.978, 890.1378)
+size = Vector2(847.3571, 890.1378)
 
 [node name="Player1" type="CharacterBody2D" groups=["Player"]]
 collision_layer = 2
@@ -739,7 +739,7 @@ libraries = {
 }
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-32, 427.5)
+position = Vector2(-51, 71.5)
 shape = SubResource("RectangleShape2D_3iwfv")
 
 [node name="State Machine" type="Node2D" parent="." node_paths=PackedStringArray("starting_state")]
@@ -802,6 +802,7 @@ standheavy_state = NodePath("../Stand_Heavy")
 collision_mask = 8
 script = ExtResource("29_tkwlq")
 damage = 80
+hitstun = 13
 
 [node name="5L_hitbox" type="CollisionShape2D" parent="State Machine/Stand_Light/5L_HitboxArea"]
 position = Vector2(714.375, -428)
@@ -823,6 +824,7 @@ jumpheavy_state = NodePath("../Jump_Heavy")
 collision_mask = 8
 script = ExtResource("29_tkwlq")
 damage = 40
+hitstun = 15
 
 [node name="jL_hitbox" type="CollisionShape2D" parent="State Machine/Jump_Light/jL_HitboxArea"]
 position = Vector2(621.5, -197.5)
@@ -841,6 +843,7 @@ jump_state = NodePath("../Jump")
 [node name="5H_HitboxArea" type="Area2D" parent="State Machine/Stand_Heavy"]
 script = ExtResource("29_tkwlq")
 damage = 170
+hitstun = 20
 
 [node name="5H_hitbox" type="CollisionShape2D" parent="State Machine/Stand_Heavy/5H_HitboxArea"]
 position = Vector2(856.49915, 449.4996)
@@ -862,6 +865,7 @@ scale = Vector2(0.8385547, 1.4426024)
 collision_mask = 8
 script = ExtResource("29_tkwlq")
 damage = 60
+hitstun = 18
 
 [node name="jH_hitbox" type="CollisionShape2D" parent="State Machine/Jump_Heavy/jH_HitboxArea"]
 position = Vector2(748.1311, 308.57086)
@@ -912,7 +916,7 @@ collision_mask = 8
 script = ExtResource("22_7ahtn")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerHurtbox"]
-position = Vector2(-23.63208, 82.711914)
+position = Vector2(-61.32161, 82.711914)
 scale = Vector2(0.9999996, 0.9999996)
 shape = SubResource("RectangleShape2D_1xqrm")
 debug_color = Color(0, 0.6316502, 0.4632914, 0.41960785)

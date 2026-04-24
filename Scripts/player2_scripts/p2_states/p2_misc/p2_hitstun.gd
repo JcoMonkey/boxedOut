@@ -9,7 +9,7 @@ func enter() -> void:
 	hitstun_complete = false
 	print("P2 Hitstun state")
 	player.animation.play(hitstun_anim)
-	player.animation.animation_finished.connect(func(_anim): hitstun_complete = true)
+	#player.animation.animation_finished.connect(func(_anim): hitstun_complete = true)
 
 func exit(new_state: State = null) -> void:
 	super(new_state)
@@ -28,9 +28,13 @@ func process_physics(delta: float) -> State:
 	
 func process_frame(delta: float) -> State:
 	super(delta)
+	if player.stun > 0:
+		player.animation.play(hitstun_anim)
+	else:
+		hitstun_complete = true
 	if hitstun_complete:
 		print("p2 hitstun complete")
-		if player.currentHealth <= 0:
+		if player.is_koed == true:
 			return defeat_state
 		elif(not player.is_on_floor()):
 			return fall_state
@@ -40,10 +44,11 @@ func process_frame(delta: float) -> State:
 			return walk_state
 		else: 
 			return idle_state
+	player.stun -= 1
 	return null
 
 func knockback() -> void:
-	var x_force := 114.0
+	var x_force := 142.0
 	#var y_force := -10.0
 
 	#check which direction to send
