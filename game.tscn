@@ -4694,6 +4694,10 @@ collision_mask = 9
 position = Vector2(-64.5, 444.1623)
 shape = SubResource("RectangleShape2D_7mycd")
 
+[node name="Ceiling" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-64.5, -2392.5513)
+shape = SubResource("RectangleShape2D_7mycd")
+
 [node name="Left Wall" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2(-2727.7876, -989.60516)
 shape = SubResource("RectangleShape2D_2cqfq")

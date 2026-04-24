@@ -738,9 +738,16 @@ libraries = {
 &"": SubResource("AnimationLibrary_ycdy4")
 }
 
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+position = Vector2(-7.213251, -15.500193)
+scale = Vector2(1.0350909, 1.0350909)
+polygon = PackedVector2Array(-47, -371, 266, 92, -50, 522, -336, 88)
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(-51, 71.5)
 shape = SubResource("RectangleShape2D_3iwfv")
+disabled = true
 
 [node name="State Machine" type="Node2D" parent="." node_paths=PackedStringArray("starting_state")]
 script = ExtResource("14_tkwlq")
